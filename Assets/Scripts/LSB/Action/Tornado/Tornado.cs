@@ -67,13 +67,12 @@ public class Tornado : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<Rigidbody>(out Rigidbody rb))
-            return;
-        if (other.TryGetComponent<PhotonView>(out PhotonView pv) && pv.OwnerActorNr == shooterID)
-            return;
 
-
+        if (!IsValidTarget(other))
+            return;
         if (!other.TryGetComponent<IMagicInteractable>(out IMagicInteractable obj))
+            return;
+        if (!other.TryGetComponent<Rigidbody>(out Rigidbody rb))
             return;
 
         if (!activeTargets.Contains(rb))
@@ -82,6 +81,28 @@ public class Tornado : MonoBehaviourPun
 
             obj?.OnMagicInteract(gameObject, data, shooterID);
         }
+    }
+
+    private bool IsValidTarget(Collider other)
+    {
+        PhotonView targetPV = other.GetComponentInParent<PhotonView>();
+
+        if (targetPV == null)
+            return true;
+
+        if (targetPV.OwnerActorNr == shooterID)
+            return false;
+
+        if (targetPV.CompareTag("Player") || other.CompareTag("Player"))
+        {
+            bool isFriendlyFireOn = PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.FRIENDLYFIRE);
+
+            if (isFriendlyFireOn) return true;
+
+            return false;
+        }
+
+        return true;
     }
 
     private void OnTriggerExit(Collider other)

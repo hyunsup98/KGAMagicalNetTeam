@@ -10,6 +10,7 @@ public static class DebuffFactory
             case DebuffType.Slow: return new SlowBehavior();
             case DebuffType.Polymorph: return new PolymorphBehavior();
             case DebuffType.Execution: return new ExecutionBehavior();
+            case DebuffType.Burning: return new BurningBehavior();
             default: return null;
         }
     }

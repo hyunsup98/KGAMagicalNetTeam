@@ -175,9 +175,6 @@ public class PlayerController : MonoBehaviourPun, IDamageable, IMagicInteractabl
             case MagicType.Lightning:
                 LightningStrikeReaction(magic, data, attackerActorNr);
                 break;
-            case MagicType.Tornado:
-                TornadoReaction();
-                break;
             default:
                 Debug.LogWarning("[PlayerController] 마법 타입 설정 안했거나 구현을 안했음");
                 break;
@@ -220,11 +217,6 @@ public class PlayerController : MonoBehaviourPun, IDamageable, IMagicInteractabl
         {
             TakeDamage(data.damage);
         }
-    }
-
-    public void TornadoReaction()
-    {
-        return;
     }
 }
 #region 레거시 코드

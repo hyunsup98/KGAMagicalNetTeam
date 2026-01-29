@@ -12,6 +12,9 @@ public class FireballSO : MagicDataSO
 
     public LayerMask explosionLayer;        // 폭발에 맞을 레이어
 
+    [Header("디버프 정보")]
+    public DebuffInfo debuffInfo;
+
     public override ActionBase CreateInstance()
     {
         return new MagicFireball(this);

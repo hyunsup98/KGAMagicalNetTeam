@@ -99,6 +99,14 @@ public class Fireball : MonoBehaviourPun
 
         foreach (Collider hit in colliders)
         {
+            IDebuffable debuffTarget = hit.GetComponent<IDebuffable>();
+            if (debuffTarget == null) debuffTarget = hit.GetComponentInParent<IDebuffable>();
+
+            if (debuffTarget != null)
+            {
+                debuffTarget.ApplyDebuff(fireballData.debuffInfo);
+            }
+
             IMagicInteractable targetComponent = hit.GetComponent<IMagicInteractable>();
             if (targetComponent == null) targetComponent = hit.GetComponentInParent<IMagicInteractable>();
 
