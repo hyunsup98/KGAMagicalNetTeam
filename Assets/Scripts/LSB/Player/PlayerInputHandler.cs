@@ -10,7 +10,8 @@ public class PlayerInputHandler : MonoBehaviourPun
     private PlayableCharacter _player;
 
     private Vector2 _rawMoveInput;
-    private bool _areInputsAllowed = true;
+    private bool _isInputBlockedByUI = false;
+    private bool _isInputBlockedByAction = false;
 
     private float _qPressTime;
     private float _ePressTime;
@@ -43,7 +44,8 @@ public class PlayerInputHandler : MonoBehaviourPun
     #endregion
 
     #region 프로퍼티
-    public Vector2 MoveInput => _areInputsAllowed ? _rawMoveInput : Vector2.zero;
+    public bool IsInputAllowed => !_isInputBlockedByUI && !_isInputBlockedByAction;
+    public Vector2 MoveInput => IsInputAllowed ? _rawMoveInput : Vector2.zero;
     public bool IsSprintInput { get; private set; }
     public bool IsWalkInput { get; private set; }
     public bool JumpButtonHeld { get; private set; }
@@ -79,8 +81,8 @@ public class PlayerInputHandler : MonoBehaviourPun
         ConnectInteractInput();
         ConnectInteractMotionInput();
 
-        UIManager.Instance.onOpenUI += DisableInputLogic;
-        UIManager.Instance.onCloseUI += EnableInputLogic;
+        UIManager.Instance.onOpenUI += BlockInputByUI;
+        UIManager.Instance.onCloseUI += UnblockInputByUI;
     }
 
     private void OnDisable()
@@ -91,8 +93,8 @@ public class PlayerInputHandler : MonoBehaviourPun
 
         if (UIManager.Instance != null)
         {
-            UIManager.Instance.onOpenUI -= DisableInputLogic;
-            UIManager.Instance.onCloseUI -= EnableInputLogic;
+            UIManager.Instance.onOpenUI -= BlockInputByUI;
+            UIManager.Instance.onCloseUI -= UnblockInputByUI;
         }
         DisconnectQE();
     }
@@ -116,7 +118,7 @@ public class PlayerInputHandler : MonoBehaviourPun
         _interactAction = _playerInput.actions["Interact"];
         _interactAction.performed += ctx =>
         {
-            if (_areInputsAllowed)
+            if (IsInputAllowed)
             {
                 IsInteractClicked = true;
             }
@@ -125,7 +127,7 @@ public class PlayerInputHandler : MonoBehaviourPun
         _interactAction.performed += InteractAction;
         _interactAction.canceled += ctx =>
         {
-            if (_areInputsAllowed)
+            if (IsInputAllowed)
             {
                 IsInteractClicked = false;
             }
@@ -135,7 +137,7 @@ public class PlayerInputHandler : MonoBehaviourPun
 
     void InteractAction(InputAction.CallbackContext ctx)
     {
-        if (_areInputsAllowed)
+        if (IsInputAllowed)
         {
             if (ctx.performed)
             {
@@ -227,7 +229,7 @@ public class PlayerInputHandler : MonoBehaviourPun
 
         _jumpAction.performed += ctx =>
         {
-            if (_areInputsAllowed)
+            if (IsInputAllowed)
             {
                 OnJumpEvent?.Invoke();
                 JumpButtonHeld = true;
@@ -270,7 +272,7 @@ public class PlayerInputHandler : MonoBehaviourPun
     {
         if (!_player.TransformationController.IsWizard || _player.TransformationController.IsTransforming) return;
 
-        if (_areInputsAllowed && !_isQHold && !_isEHold)
+        if (IsInputAllowed && !_isQHold && !_isEHold)
         {
             OnAttackEvent?.Invoke(isLeft);
         }
@@ -282,7 +284,7 @@ public class PlayerInputHandler : MonoBehaviourPun
 
         _transformAction.started += ctx =>
         {
-            if (_areInputsAllowed) OnTransformEvent?.Invoke(true);
+            if (IsInputAllowed) OnTransformEvent?.Invoke(true);
         };
 
         _transformAction.canceled += ctx =>
@@ -291,27 +293,25 @@ public class PlayerInputHandler : MonoBehaviourPun
         };
     }
 
-    private void EnableInputLogic() => OnPlayerInput();
-    private void DisableInputLogic() => OffPlayerInput();
+    private void BlockInputByUI() => _isInputBlockedByUI = true;
+    private void UnblockInputByUI() => _isInputBlockedByUI = false;
 
-    public void OffPlayerInput()
+    public void SetActionInputLock(bool isLocked)
     {
         if (photonView.IsMine)
         {
-            _areInputsAllowed = false;
-            _rawMoveInput = Vector2.zero;
+            _isInputBlockedByAction = isLocked;
+
+            if (!IsInputAllowed)
+            {
+                _rawMoveInput = Vector2.zero;
+            }
         }
     }
 
-    public void OnPlayerInput()
-    {
-        if (photonView.IsMine)
-        {
-            _areInputsAllowed = true;
-            if (_moveAction != null) 
-                _rawMoveInput = _moveAction.ReadValue<Vector2>();
-        }
-    }
+    public void OffPlayerInput() => SetActionInputLock(true);
+    public void OnPlayerInput() => SetActionInputLock(false);
+
     public void ConnectCameraChange()
     {
         if (photonView.IsMine)
