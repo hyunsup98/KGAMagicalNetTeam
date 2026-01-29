@@ -43,9 +43,11 @@ public class CoinItself : MonoBehaviourPunCallbacks
     IEnumerator WaitToDestroyCoin()
     {
         yield return new WaitUntil(() => photonView.IsMine);
-       
+
+        if (this.gameObject != null)
+        {
             PhotonNetwork.Destroy(this.gameObject);
-        
+        }
         //WaitToDestroy = null;
 
     }
