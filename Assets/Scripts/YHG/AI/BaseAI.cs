@@ -330,6 +330,12 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     //이펙트 생성 위치 반환
     public Transform GetCenterPosition()
     {
+        if (Anim != null && Anim.isHuman)
+        {
+            Transform bone = Anim.GetBoneTransform(HumanBodyBones.Chest);
+            if (bone == null) bone = Anim.GetBoneTransform(HumanBodyBones.Hips);
+            if (bone != null) return bone;
+        }
         return transform;
     }
 

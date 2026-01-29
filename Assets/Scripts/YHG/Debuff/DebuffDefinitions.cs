@@ -5,10 +5,11 @@ using UnityEngine;
 public enum DebuffType
 {
     None,
-    Stun,       //기절(감전?)
-    Polymorph,  //변이, 자동이동?
-    Slow,
-    Execution   //처형(처형씬타임라인용)
+    Stun,        //기절(감전?)
+    Polymorph,   //변이, 자동이동?
+    Slow,   
+    Execution,   //처형(처형씬타임라인용)
+    Burning      //파이어볼 테스트
 }
 
 //디버프 정보 구조체
