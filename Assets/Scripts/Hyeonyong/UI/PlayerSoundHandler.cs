@@ -23,11 +23,9 @@ public class PlayerSoundHandler : MonoBehaviour
 
         if (pv.IsMine)
         {
-            Debug.Log("내거 값 가져옴");
-            SetSoundEvent();
-            //SetMicSound(-1);
-            //SetVoiceSound(-1);
+            //PunVoiceClient.Instance.ConnectAndJoinRoom();
             PunVoiceClient.Instance.PrimaryRecorder = recorder;
+            SetSoundEvent();
         }
         else
         {
@@ -40,68 +38,62 @@ public class PlayerSoundHandler : MonoBehaviour
     {
         otherPlayerAudio.Remove(audio);
     }
+
+    //private void OnDestroy()
+    //{
+    //    if (pv.IsMine && PunVoiceClient.Instance != null)
+    //    {
+    //        if (PunVoiceClient.Instance.Client.InRoom)
+    //        {
+    //            PunVoiceClient.Instance.Client.OpLeaveRoom(false);
+    //        }
+    //    }
+    //}
     private void SetSoundEvent()
     {
-        UIManager.Instance.MicSound.onValueChanged.AddListener((value) =>
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.MicSound.onValueChanged.AddListener((value) =>
+                {
+                    SetMicSound(value);
+                });
+            UIManager.Instance.VoiceChatSound.onValueChanged.AddListener((value) =>
             {
-                SetMicSound(value);
+                SetVoiceSound(value);
             });
-        UIManager.Instance.VoiceChatSound.onValueChanged.AddListener((value) =>
-        {
-            SetVoiceSound(value);
-        });
-        UIManager.Instance.VoiceChatSoundMute.onValueChanged.AddListener(isOn =>
-        {
-            SetVoiceMute(isOn);
-        });
-        UIManager.Instance.MicSoundMute.onValueChanged.AddListener(isOn =>
-        {
-            SetMicMute(isOn);
-        });
+            UIManager.Instance.VoiceChatSoundMute.onValueChanged.AddListener(isOn =>
+            {
+                SetVoiceMute(isOn);
+            });
+            UIManager.Instance.MicSoundMute.onValueChanged.AddListener(isOn =>
+            {
+                SetMicMute(isOn);
+            });
 
-        SetMicSound(UIManager.Instance.MicSound.value);
-        SetVoiceSound(UIManager.Instance.VoiceChatSound.value);
-        SetVoiceMute(UIManager.Instance.VoiceChatSoundMute.isOn);
-        SetMicMute(UIManager.Instance.MicSoundMute.isOn);
-        //UIManager.Instance.VoiceChatSoundMute.isOn = PlayerPrefsDataManager.PlayerVoiceMute;
-        ////처음에 값을 가져올 때 
-        //UIManager.Instance.MicSoundMute.isOn = PlayerPrefsDataManager.PlayerMicMute;
+            SetMicSound(UIManager.Instance.MicSound.value);
+            SetVoiceSound(UIManager.Instance.VoiceChatSound.value);
+            SetVoiceMute(UIManager.Instance.VoiceChatSoundMute.isOn);
+            SetMicMute(UIManager.Instance.MicSoundMute.isOn);
+        }
+        else
+        {
+            SetMicSound(PlayerPrefsDataManager.PlayerMic);
+            SetVoiceSound(PlayerPrefsDataManager.PlayerVoice);
+            SetVoiceMute(PlayerPrefsDataManager.PlayerVoiceMute);
+            SetMicMute(PlayerPrefsDataManager.PlayerMicMute);
+        }
 
     }
 
     private void SetMicSound(float value)
     {
-        Debug.Log("내거 값 가져옴 새탕 "+value);
-        //이거 시작하자마자 받아와서 처음 값으로 진행되는거 같다 그것도 아닌데?
-        if (value == -1)
-        {
-            Debug.Log("UI 매니저에서 값 가져옴 : " + UIManager.Instance.MicSound.value);
-            mic.AmplificationFactor = UIManager.Instance.MicSound.value;
-        }
-        else
-        {
-            mic.AmplificationFactor = value;
-        }
+        mic.AmplificationFactor = value;
     }
     private void SetVoiceSound(float value)
     {
-        if (value == -1)
+        foreach (AudioSource source in otherPlayerAudio)
         {
-            foreach (AudioSource source in otherPlayerAudio)
-            {
-                //if(source.GetComponent<PhotonView>().IsMine)
-                //     continue;
-                source.volume = UIManager.Instance.VoiceChatSound.value;
-            }
-        }
-        else
-        {
-            foreach (AudioSource source in otherPlayerAudio)
-            {
-                //    if (source.GetComponent<PhotonView>().IsMine)
-                //        continue;
-                source.volume = value;
-            }
+            source.volume = value;
         }
     }
 
