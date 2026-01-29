@@ -466,7 +466,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
         {
             GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
         }
-
     }
 }
 

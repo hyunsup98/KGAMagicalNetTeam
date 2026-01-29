@@ -216,7 +216,9 @@ public class GameManager : PhotonSingleton<GameManager>
         if (PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.ONROOM))
             return;
 
-        if (LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget() == null)
+
+        Transform targetTransform = LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget();
+        if (!targetTransform)
         {
             LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
         }
