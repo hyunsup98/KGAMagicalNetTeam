@@ -2,6 +2,7 @@ using BzKovSoft.RagdollTemplate.Scripts.Charachter;
 using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using System.Collections;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -189,7 +190,7 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
                 LightningStrikeReaction(magic, data, attackerActorNr);
                 break;
             case MagicType.Tornado:
-                TornadoReaction();
+                TornadoReaction(data);
                 break;
             default:
                 Debug.LogWarning("[HumanoidRagdollController] 마법 타입 설정 안했거나 구현을 안했음");
@@ -217,8 +218,11 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
             baseAI.TakeDamage(data.damage);
     }
 
-    public void TornadoReaction()
+    public void TornadoReaction(MagicDataSO data)
     {
         ApplyRagdoll(Vector3.zero);
+
+        if (baseAI != null)
+            baseAI.TakeDamage(data.damage);
     }
 }
