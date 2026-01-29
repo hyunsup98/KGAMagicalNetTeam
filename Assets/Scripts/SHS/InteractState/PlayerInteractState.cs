@@ -1,31 +1,52 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class PlayerInteractState : PlayerStateBase
+public class PlayerInteractState : PlayerStateBase, IInteractable
 {
-    public IInteractable target { get; private set; }   // 상호작용을 할 상대 타겟
+    public HashSet<IInteractable> receivers = new HashSet<IInteractable>();     // 상호작용을 할 타겟들
 
-    private InteractionDataSO interactionData;
+    public bool IsInteracted { get; private set; }  // IInteractable 인터페이스 필드 → 상호작용이 진행 중이면 true
 
-    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, IInteractable target = null) 
+    public InteractionDataSO interactionData { get; private set; }  // 암살 연출 데이터
+
+    public Transform ActorTrans => player.currentTransform;
+
+    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, InteractionDataSO interactionData = null, HashSet<IInteractable> receivers = null) 
         : base(player, stateMachine)
     {
-        this.target = target;
+        this.receivers = receivers;
     }
 
-    public void SetTarget(IInteractable target) => this.target = target;
+    public virtual void SetTarget(IInteractable receivers)
+    {
+        this.receivers.Clear();
+        this.receivers.Add(receivers);
+    }
+
+    public virtual void SetTarget(HashSet<IInteractable> receivers)
+    {
+        this.receivers.Clear();
+        this.receivers = receivers;
+    }
+
+    public virtual void Init(InteractionDataSO data)
+    {
+        interactionData = data;
+    }
 
     public override void Enter()
     {
         base.Enter();
 
         player.InputHandler.CanInteractMotion = false;
+        InteractionManager.Instance.RequestInteraction(interactionData, this, receivers.ToArray());
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        // 다시 인풋 시스템 가능하게
     }
 
     public override void Execute()
@@ -38,8 +59,16 @@ public class PlayerInteractState : PlayerStateBase
         base.FixedExecute();
     }
 
-    public void Init(InteractionDataSO data)
+    // 상호작용 시 진행할 것들
+    public virtual void OnInteraction()
     {
-        interactionData = data;
+        // 인풋시스템 x
+        player.InputHandler.OffPlayerInput();
+    }
+
+    public virtual void OnStopped()
+    {
+        // 인풋시스템 o
+        player.InputHandler.OnPlayerInput();
     }
 }

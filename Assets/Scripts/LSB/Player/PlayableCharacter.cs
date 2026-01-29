@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayableCharacter : MonoBehaviourPun, IInteractable
+public class PlayableCharacter : MonoBehaviourPun
 {
     // 구독할 이벤트 정의
     public event Action<float> OnHpChanged; // 체력 변경하면 전달용
@@ -43,8 +43,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     [SerializeField] private int cameraIndex = -1;
     [SerializeField] private int curCameraIndex = -1;
 
-    public HashSet<IInteractable> receivers = new HashSet<IInteractable>();
-
     public enum MoveDir { Front, Back, Left, Right }
 
     #region 프로퍼티
@@ -78,13 +76,10 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     public PlayerAttackState AttackState { get; private set; }
     public PlayerInteractState InteractState { get; private set; }    // 260122 신현섭: 상호작용 상태로 전환
 
-    public bool IsInteracted { get; private set; }  // 260122 신현섭: IInteractable 인터페이스 필드 → 상호작용이 진행 중이면 true
 
-    [SerializeField] private Transform currentTransform;
+    [field: SerializeField] public InteractionDataSO interactionData { get; private set; }  // 암살 연출 데이터
+    [field: SerializeField] public Transform currentTransform { get; private set; }
 
-    public Transform ActorTrans => currentTransform;
-
-    [field: SerializeField] public InteractionDataSO interactionData { get; set; }  // 260126 신현섭: 암살 연출 데이터
 
 
     #endregion
@@ -124,7 +119,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
         JumpState = new PlayerJumpState(this, StateMachine, "IsJumping");
         DodgeState = new PlayerDodgeState(this, StateMachine, "IsDodging");
         AttackState = new PlayerAttackState(this, StateMachine);
-        InteractState = new PlayerInteractState(this, StateMachine);    // 260122 신현섭: 상호작용 상태 생성
 
 
 
@@ -284,7 +278,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     // 20260127 신현섭: 상호작용 이벤트에 체인시킬 메서드
     private void HandleInteract()
     {
-        InteractionManager.Instance.RequestInteraction(interactionData, this, receivers.ToArray());
+        StateMachine.ChangeState(InteractState);
     }
 
     // 260122 신현섭: 상호작용이 가능한 상태인지 체크 (레이캐스트)
@@ -299,18 +293,22 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
                 // todo: 상호작용 가능 UI 띄우기 등 실행
                 InputHandler.CanInteractMotion = true;
 
+                if (InteractState == null)
+                {
+                    InteractState = new PlayerAssassinateState(this, StateMachine);
+                }
+
                 // 상호작용 대상이 다를 경우 갱신
-                if(InteractState.target != interact)
+                if (!InteractState.receivers.Contains(interact))
                 {
                     InteractState.SetTarget(interact);
                     InteractState.Init(interact.interactionData);
-                    receivers.Add(interact);
                 }
             }
             else
             {
                 InputHandler.CanInteractMotion = false;
-                receivers.Clear();
+                InteractState = null;
             }
         }
     }
@@ -373,19 +371,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     public void RemoveLayer()
     {
         gameObject.layer = LayerMask.NameToLayer("Default");
-    }
-
-    // 260122 신현섭: 상호작용 시 진행할 것들
-    public void OnInteraction()
-    {
-        // 인풋시스템 x
-        InputHandler.OffPlayerInput();
-    }
-
-    public void OnStopped()
-    {
-        // 인풋시스템 o
-        InputHandler.OnPlayerInput();
     }
 
     public void CheckCameraOnDie()
