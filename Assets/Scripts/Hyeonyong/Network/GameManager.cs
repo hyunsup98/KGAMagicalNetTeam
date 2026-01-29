@@ -246,6 +246,8 @@ public class GameManager : PhotonSingleton<GameManager>
         int curPlayerCount = PhotonNetwork.CurrentRoom.GetProps<int>(NetworkProperties.PLAYERCOUNT)-1;
         Debug.Log("사망 판정 :" + curPlayerCount + "/" + PhotonNetwork.CurrentRoom.PlayerCount);
         PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.PLAYERCOUNT, curPlayerCount);
+       
+        LocalPlayer.GetComponent<PlayerInputHandler>().OffPlayerInput();
     }
 
     public void CheckRoundClear(int player)
