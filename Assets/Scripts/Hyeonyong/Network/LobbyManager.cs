@@ -21,6 +21,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] Dictionary<string,GameObject> curRoomList = new Dictionary<string, GameObject>();
 
     [SerializeField] AudioClip LobbyAudio;
+    [SerializeField] int maxPlayers = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -75,12 +76,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
 
-
+    RoomOptions SetMaxPlayerCount()
+    {
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = maxPlayers;
+        return options;
+    }
 
     public void CreateRoom()
     {
         //PhotonNetwork.CreateRoom(createRoomInput.text, new RoomOptions { MaxPlayers=4});//옆에 인풋필드에 들어있던 내용의 이름으로 방 생성
-        PhotonNetwork.CreateRoom(createRoomInput.text);//옆에 인풋필드에 들어있던 내용의 이름으로 방 생성
+        PhotonNetwork.CreateRoom(createRoomInput.text, SetMaxPlayerCount());//옆에 인풋필드에 들어있던 내용의 이름으로 방 생성
     }
     public void JoinRoom()
     {
@@ -92,7 +98,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void JoinRandomRoom()
     {
-        PhotonNetwork.JoinRandomOrCreateRoom();//만드는 것까지 하거나
+        PhotonNetwork.JoinRandomOrCreateRoom(null, (byte) maxPlayers);//만드는 것까지 하거나
     }
 
     public void ExitLobby()

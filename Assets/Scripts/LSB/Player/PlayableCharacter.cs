@@ -41,6 +41,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
 
     [Header("Camera Setting")]
     [SerializeField] private int cameraIndex = -1;
+    [SerializeField] private int curCameraIndex = -1;
 
     public HashSet<IInteractable> receivers = new HashSet<IInteractable>();
 
@@ -332,6 +333,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
             {
                 CheckCameraOnDie();
                 PhotonNetwork.LocalPlayer.SetProps(NetworkProperties.PLAYER_ALIVE, false);
+                ChangeCameraOnDie();
             }
             OnDie?.Invoke();
             Debug.Log("캐릭터 사망");
@@ -441,12 +443,34 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
         }
         if (otherPlayerTransform[cameraIndex] != null) 
         {
+            if (curCameraIndex == cameraIndex)
+                return;
             GameCamera.SetTarget(otherPlayerTransform[cameraIndex]);
+            curCameraIndex = cameraIndex;
         }
+
     }
     public void ChangeCameraTargetOnPlayerInput(InputAction.CallbackContext ctx)
     {
         ChangeCameraTarget();
+    }
+
+    public void ChangeCameraOnDie()
+    {
+        photonView.RPC(nameof(ChangeCameraOnDie_RPC), RpcTarget.Others);
+    }
+
+    [PunRPC]
+    public void ChangeCameraOnDie_RPC()
+    {
+        ThirdPersonCamera cam = GameObject.FindAnyObjectByType<ThirdPersonCamera>();
+
+
+        if (cam != null && cam.ReturnTarget() == this.transform)
+        {
+            GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
+        }
+
     }
 }
 

@@ -6,6 +6,8 @@ public class RoundManager : MonoBehaviour
     public Transform[] spawnPos;
     [SerializeField] AudioClip roundAudio;
     [SerializeField] AudioClip onGameAudio;
+    [SerializeField] int requireMoneyCount=5;
+    public int RequireMoenyCount => requireMoneyCount;
     private void Awake()
     {
         Instance = this;

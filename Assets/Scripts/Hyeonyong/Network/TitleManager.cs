@@ -49,7 +49,7 @@ public class TitleManager : MonoBehaviourPunCallbacks
     {
         if (onTest)
         {
-            PhotonNetwork.JoinRandomOrCreateRoom();
+            PhotonNetwork.JoinRandomOrCreateRoom(null, (byte)4);
         }
         else
         {

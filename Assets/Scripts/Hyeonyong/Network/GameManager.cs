@@ -91,7 +91,8 @@ public class GameManager : PhotonSingleton<GameManager>
         PhotonNetwork.LocalPlayer.SetProps(NetworkProperties.PLAYER_ISWIZARD, false);
 
         LocalPlayer = player;
-        player.GetComponent<PlayableCharacter>().OnDie += CheckDie;
+        if (player != null)
+            player.GetComponent<PlayableCharacter>().OnDie += CheckDie;
         CheckInGamePlayer();
 
         yield return new WaitUntil(() => UIManager.Instance != null);
@@ -155,6 +156,8 @@ public class GameManager : PhotonSingleton<GameManager>
             Debug.Log("팀 재화 표시 실패");
 
         }
+
+        needMoneyCount = RoundManager.Instance.RequireMoenyCount;
     }
 
     public void PlusMoneyCount()

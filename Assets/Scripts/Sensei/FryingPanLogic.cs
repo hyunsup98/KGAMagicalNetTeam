@@ -64,7 +64,8 @@ public class FryingPanLogic : MonoBehaviourPunCallbacks
         float force = Mathf.Sqrt((9.8f * distance * distance) / (distance - c));
         rb.AddForce(adjustedRotation * Vector3.forward * force, ForceMode.VelocityChange);
 
-        StartCoroutine(DeActiveMushroom(mushroom, rb));
+        if(gameObject.activeSelf)
+            StartCoroutine(DeActiveMushroom(mushroom, rb));
     }
 
     
