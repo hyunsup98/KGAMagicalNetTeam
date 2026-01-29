@@ -178,7 +178,6 @@ public class PlayableCharacter : MonoBehaviourPun
             UnsubscribeInputEvents();
             if(GameManager.Instance != null)
                 OnDie -= GameManager.Instance.CheckDie;
-            photonView.RPC(nameof(ChangeCameraOnDie_RPC), RpcTarget.Others);
         }
     }
 
@@ -452,12 +451,6 @@ public class PlayableCharacter : MonoBehaviourPun
         {
             GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
         }
-    }
-
-    [PunRPC]
-    public void ChangeCameraOnDie_RPC()
-    {
-        ChangeCameraOnDie();
     }
 }
 
