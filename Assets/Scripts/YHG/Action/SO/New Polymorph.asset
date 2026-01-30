@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dccdd80f88f354f9b9264d223ab437, type: 3}
+  m_Name: New Polymorph
+  m_EditorClassIdentifier: Assembly-CSharp::PolymorphMagicSO
+  itemId: 
+  itemName: 
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 5000085408619585265, guid: 426f71e71e6d62c4bb82a56ae87f2794, type: 3}
+  description: 
+  cooldown: 2
+  isDisposable: 0
+  damage: 0
+  knockbackForce: 0
+  radius: 5
+  forceUpward: 1
+  spawnOffset: {x: 0, y: 0, z: 0}
+  magicSound: {fileID: 0}
+  magicType: 0
+  projectileSpeed: 15
+  maxLifetime: 3
+  hitEffectPrefab: {fileID: 1724890150685576, guid: 504bc11969e143249975cacca01d426a, type: 3}
+  debuffInfo:
+    Type: 2
+    Duration: 5
+    Value: 0
+    VisualPrefab: {fileID: 0}
+    PolymorphPrefabs:
+    - {fileID: 1094081580753875644, guid: b25a260d79ef636458606aaf7912c706, type: 3}
+    - {fileID: 2383198162052046199, guid: 784079bb73fe475428ccf6ff26baa33d, type: 3}
+    - {fileID: 567410508363510798, guid: b68723b8e3b715848a470d8661714af5, type: 3}
+    - {fileID: 450559927833734997, guid: 51540600f4008d24982950f6a6300929, type: 3}
+    - {fileID: 1176248645086346724, guid: b8e84bcfffef7984a85544c006f43815, type: 3}
+    - {fileID: 3978681638790901784, guid: 6086a7529629e904789877c8e3016e80, type: 3}
+    ExecutionAnimator: {fileID: 0}

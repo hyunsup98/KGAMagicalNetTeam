@@ -23,6 +23,7 @@ public class ExecutionBehavior : IDebuffBehavior
             anim.runtimeAnimatorController = info.ExecutionAnimator;
         }
     }
+
     public void OnExecute(IDebuffable target)
     {
         //안전장치

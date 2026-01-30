@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 /* 
 모든 AI의 부모가 되는 추상 클래스
@@ -44,6 +45,9 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     //01.28 맵 탈출 복귀 체크
     protected Vector3 initialPosition;
 
+    //렌더러 캐싱용 리스트(폴리모프용)
+    private Renderer[] cachedRenderers;
+
     //01.19 래그돌 체킹
     private bool _isKnockedDown = false;
     public bool IsKnockedDown
@@ -77,6 +81,12 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
         stateMachine = new StateMachine(); //상태머신 생성
 
         InitRagdoll(); //랙돌 통합
+
+        //렌더러 기억
+        if (humanModel != null)
+        {
+            cachedRenderers = humanModel.GetComponentsInChildren<Renderer>();
+        }
     }
 
     protected virtual void Start()
@@ -321,7 +331,15 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     //모델 끄기/켜기
     public void SetModelVisibility(bool isVisible)
     {
-        if (humanModel != null)
+        if (cachedRenderers != null)
+        {
+            foreach (Renderer r in cachedRenderers)
+            {
+                //렌더러컴포만꺼두기
+                if(r!=null) r.enabled = isVisible;
+            }
+        }
+        else if (humanModel != null && humanModel != this.gameObject)
         {
             humanModel.SetActive(isVisible);
         }

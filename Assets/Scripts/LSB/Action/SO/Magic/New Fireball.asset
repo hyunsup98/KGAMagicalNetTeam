@@ -35,3 +35,10 @@ MonoBehaviour:
   explosionLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+  debuffInfo:
+    Type: 5
+    Duration: 5
+    Value: 5
+    VisualPrefab: {fileID: 1986202770299390, guid: 167e663a5fb66bb42a555a0fea27b834, type: 3}
+    PolymorphPrefabs: []
+    ExecutionAnimator: {fileID: 0}

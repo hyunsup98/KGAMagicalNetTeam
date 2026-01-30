@@ -26,6 +26,7 @@ public class PolymorphBehavior : IDebuffBehavior
         {
             animalInstance = Object.Instantiate(selectedModel, target.transform.position, target.transform.rotation);
             animalInstance.transform.SetParent(target.transform);
+            animalInstance.SetActive(true);
         }
 
         float penalty = (info.Value > 0f) ? info.Value : 0.5f;
