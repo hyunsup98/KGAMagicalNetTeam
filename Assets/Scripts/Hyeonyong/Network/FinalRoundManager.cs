@@ -16,7 +16,7 @@ public class FinalRoundManager : MonoBehaviourPunCallbacks
     }
     private void Start()
     {
-        PunVoiceClient.Instance.Disconnect();
+        //PunVoiceClient.Instance.Disconnect();
         SoundManager.Instance.PlayBGM(loseOrWinAudio);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

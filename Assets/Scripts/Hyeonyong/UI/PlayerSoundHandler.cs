@@ -9,7 +9,7 @@ public class PlayerSoundHandler : MonoBehaviour
 {
     PhotonView pv;
     MicAmplifier mic;
-    AudioSource audio;
+    AudioSource myAudio;
     Recorder recorder;
     static List<AudioSource> otherPlayerAudio = new List<AudioSource>();
 
@@ -17,7 +17,7 @@ public class PlayerSoundHandler : MonoBehaviour
     {
 
         pv = GetComponent<PhotonView>();
-        audio = GetComponent<AudioSource>();
+        myAudio = GetComponent<AudioSource>();
         mic = GetComponent<MicAmplifier>();
         recorder = GetComponent<Recorder>();
 
@@ -31,12 +31,12 @@ public class PlayerSoundHandler : MonoBehaviour
         {
             recorder.enabled = false;
             mic.enabled = false;
-            otherPlayerAudio.Add(audio);
+            otherPlayerAudio.Add(myAudio);
         }
     }
     private void OnDisable()
     {
-        otherPlayerAudio.Remove(audio);
+        otherPlayerAudio.Remove(myAudio);
     }
 
     //private void OnDestroy()

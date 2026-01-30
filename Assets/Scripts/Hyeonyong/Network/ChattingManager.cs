@@ -32,7 +32,7 @@ public class ChattingManager : MonoBehaviourPunCallbacks
         Debug.Log("방 입장");
 
         chatInputField = chatInput.GetComponent<TMP_InputField>();
-        pv= GetComponent<PhotonView>();
+        pv = GetComponent<PhotonView>();
         _myName = PhotonNetwork.NickName;
         //chattingText.text += "환영합니다 " + _myName + "님.";
         //playerInput = GetComponent<PlayerInput>();
@@ -41,7 +41,7 @@ public class ChattingManager : MonoBehaviourPunCallbacks
         //playerInput.actions["Enter"].performed += SendControl;
 
     }
-    private void OnDisable()
+    public override void OnDisable()
     {
         base.OnDisable();
         playerInput.action.performed -= SendControl;

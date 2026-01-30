@@ -94,7 +94,7 @@ public class FryingPanLogic : MonoBehaviourPunCallbacks
         _mushroomCoroutine=StartCoroutine(FiringMushroom());
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
         base.OnDisable();
         StopCoroutine(_mushroomCoroutine);

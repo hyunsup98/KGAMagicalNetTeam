@@ -4,7 +4,7 @@ using UnityEngine;
 public class VoiceManager : Singleton<VoiceManager>
 {
     PhotonView pv;
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         if (Instance == this)

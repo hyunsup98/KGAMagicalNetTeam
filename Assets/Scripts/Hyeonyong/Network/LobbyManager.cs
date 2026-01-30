@@ -103,6 +103,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void ExitLobby()
     {
+
+        if (FirebaseAuth.DefaultInstance != null)
+        {
+            Debug.Log("로그아웃");
+            FirebaseAuth.DefaultInstance.SignOut();
+        }
+   
         PhotonNetwork.LeaveLobby();//로비 떠나라고 포톤에게 지시, 데이터 저장 하려면 씬 이동 후 해당 코드 실행하는 것도 괜찮음
         SceneManager.LoadScene(0);//다시 타이틀 화면으로
     }

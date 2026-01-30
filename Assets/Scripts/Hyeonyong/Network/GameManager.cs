@@ -44,8 +44,9 @@ public class GameManager : PhotonSingleton<GameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -251,7 +252,7 @@ public class GameManager : PhotonSingleton<GameManager>
 
     public void ExitGame()
     {
-        PunVoiceClient.Instance.Disconnect();
+        //PunVoiceClient.Instance.Disconnect();
         LeaveRoom();
         //SceneManager.LoadSceneAsync("Lobby");
     }

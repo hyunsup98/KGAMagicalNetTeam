@@ -2245,19 +2245,7 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1400072298}
-        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: CheckEmail
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -3304,6 +3292,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 1186008608}
+  passwordInput: {fileID: 704065802}
+  nickInput: {fileID: 1704123933}
+  loginBtn: {fileID: 271012259}
+  registerBtn: {fileID: 191458}
+  mouseSensivitySlider: {fileID: 0}
+  checkMouseXInvert: {fileID: 0}
+  checkMouseYInvert: {fileID: 0}
+  thirdPersonCamera: {fileID: 0}
+  languageDropDown: {fileID: 0}
+  graphicQualityDropDown: {fileID: 0}
+  resolutionDropDown: {fileID: 0}
+  resolutionWindowDropDown: {fileID: 0}
   bgmSound: {fileID: 0}
   bgmSoundMute: {fileID: 0}
   sfxSound: {fileID: 0}
@@ -3312,23 +3312,16 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 0}
   micSound: {fileID: 0}
   micSoundMute: {fileID: 0}
-  graphicQualityDropDown: {fileID: 0}
-  mouseSensivitySlider: {fileID: 0}
-  checkMouseXInvert: {fileID: 0}
-  checkMouseYInvert: {fileID: 0}
-  languageDropDown: {fileID: 0}
-  Panels: []
-  escInput: {fileID: 0}
-  resolutionDropDown: {fileID: 0}
-  thirdPersonCamera: {fileID: 0}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 0}
   myInfoPanel: {fileID: 0}
   IconPanel: {fileID: 0}
   moneyCount: {fileID: 0}
   gameSettingUI: {fileID: 0}
-  onGame: 0
   settingUIGameObject: []
-  uiName: GameMenu
+  Panels: []
+  escInput: {fileID: 0}
+  onGame: 0
 --- !u!4 &1966156100
 Transform:
   m_ObjectHideFlags: 0

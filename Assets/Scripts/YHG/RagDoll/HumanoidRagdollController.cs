@@ -24,11 +24,13 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     private bool isRagdollActive = false;
     private float ragdollStartTime;
 
+    // 토네이도 내부 상태 확인용 플래그
+    private bool isInTornado = false;
+
     //중복기상방지
 
     private bool isRecovering = false;
-
-
+    
 
     private void Awake()
     {
@@ -42,6 +44,13 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     {
         if (baseAI != null && baseAI.CurrentHP <= 0) return;
         if (isRecovering) return;
+
+        // 토네이도 적용 중이면 타이머 리셋
+        if (isInTornado)
+        {
+            ragdollStartTime = Time.time;
+            return;
+        }
 
         //일단 대기
         if (Time.time - ragdollStartTime < knockDownDuration) return;
@@ -234,23 +243,33 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
 
     public void TornadoReaction(MagicDataSO data)
     {
-        if (baseAI != null)
-            baseAI.TakeDamage(1);
-
         ApplyRagdoll(Vector3.up * 2.0f);
+
+        if (baseAI != null)
+            baseAI.TakeDamage(0);
     }
 
     public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
-        if (baseAI != null && baseAI.CurrentHP <= 0) return false;
-
-        if (data.magicType == MagicType.Tornado)
-        {
-            return true;
-        }
-
-        if (isRagdollActive) return false;
+        if (data.magicType == MagicType.Tornado) return true;
 
         return true;
+    }
+
+    public void SetTornadoState(bool state)
+    {
+        isInTornado = state;
+        // 토네이도에 잡히면 타이머 리셋
+        if (state) ragdollStartTime = Time.time;
+    }
+
+    // 토네이도가 맞을 Hip 반환
+    public Rigidbody GetRagdollHips()
+    {
+        Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
+        if (hips != null) return hips.GetComponent<Rigidbody>();
+
+        // Hip 못찾으면 그냥 Rigidbody 반환
+        return GetComponent<Rigidbody>();
     }
 }

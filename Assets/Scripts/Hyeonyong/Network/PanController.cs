@@ -115,7 +115,7 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
             PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.FRYINGPANHP, curHp);
         }
     }
-    private void OnDisable()
+    public override void OnDisable()
     {
         base.OnDisable();
         //비활성화시 실행할 코드

@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -25,7 +25,27 @@ public class UIManager : MonoBehaviour
     /// 8. 언어 변경(int)(enum) : Language
     /// </summary>
 
+    [Header("로그인")]
     [SerializeField] TMP_InputField emailInput;
+    [SerializeField] TMP_InputField passwordInput;
+    [SerializeField] TMP_InputField nickInput;
+    [SerializeField] Button loginBtn;
+    [SerializeField] Button registerBtn;
+
+    [Header("게임 세팅")]
+    [SerializeField] Slider mouseSensivitySlider;
+    [SerializeField] Toggle checkMouseXInvert;
+    [SerializeField] Toggle checkMouseYInvert;
+    [SerializeField] ThirdPersonCamera thirdPersonCamera;
+    [SerializeField] TMP_Dropdown languageDropDown;
+
+    [Header("그래픽 세팅")]
+    [SerializeField] TMP_Dropdown graphicQualityDropDown;
+    [SerializeField] TMP_Dropdown resolutionDropDown;
+    List<Resolution> resolutions;
+    [SerializeField] TMP_Dropdown resolutionWindowDropDown;
+
+    [Header("오디오 세팅")]
     [SerializeField] Slider bgmSound;
     [SerializeField] Toggle bgmSoundMute;
     [SerializeField] Slider sfxSound;
@@ -40,43 +60,38 @@ public class UIManager : MonoBehaviour
     [SerializeField] Toggle micSoundMute;
     public Toggle MicSoundMute => micSoundMute;
 
-    [SerializeField] TMP_Dropdown graphicQualityDropDown;
-    [SerializeField] Slider mouseSensivitySlider;
-    [SerializeField] Toggle checkMouseXInvert;
-    [SerializeField] Toggle checkMouseYInvert;
-    [SerializeField] TMP_Dropdown languageDropDown;
-    [SerializeField] GameObject[] Panels;
-    [SerializeField] private InputActionReference escInput;
-
-    [SerializeField] TMP_Dropdown resolutionDropDown;
-    List<Resolution> resolutions;
-    [SerializeField] TMP_Dropdown resolutionWindowDropDown;
-    [SerializeField] ThirdPersonCamera thirdPersonCamera;
-
-
+    [Header("인게임")]
+    [SerializeField] string uiName = "GameMenu";
     public Transform playerInfoPanel;
     public Transform myInfoPanel;
     public Transform IconPanel;
     public TextMeshProUGUI moneyCount;
-
     [SerializeField] GameObject gameSettingUI;
+    [SerializeField] GameObject[] settingUIGameObject;
+
+    [Header("기타")]
+    [SerializeField] GameObject[] Panels;
+    [SerializeField] private InputActionReference escInput;
+
+
+
+
     bool onGameSettingUI = false;
 
     public Action onOpenUI;
     public Action onCloseUI;
 
     [SerializeField] bool onGame=false;
-    [SerializeField] GameObject[] settingUIGameObject;
 
     Dictionary<string, bool> checkUI = new Dictionary<string, bool>();
 
 
-    [SerializeField] string uiName = "GameMenu";
 
     private void Awake()
     {
         Instance = this;
         StartCoroutine(LoadData());
+        StartCoroutine(SetLoginUiToFirebaseAuthManager());
         if (escInput == null)
             return;
         escInput.action.Enable();
@@ -110,6 +125,20 @@ public class UIManager : MonoBehaviour
                 panel.SetActive(false);
             }
         }
+    }
+
+    private IEnumerator SetLoginUiToFirebaseAuthManager()
+    {
+        if (emailInput == null || passwordInput == null || nickInput == null || loginBtn == null || registerBtn == null)
+            yield break;
+        yield return new WaitUntil(() => FirebaseAuthManager.Instance != null);
+
+        emailInput.onEndEdit.AddListener((value)=>
+            {FirebaseAuthManager.Instance.CheckEmail();});
+        loginBtn.onClick.AddListener(() => { FirebaseAuthManager.Instance.Login(); });
+        registerBtn.onClick.AddListener(() => { FirebaseAuthManager.Instance.Register(); });
+        FirebaseAuthManager.Instance.SetInputUi(loginBtn, registerBtn, emailInput, passwordInput, nickInput);
+
     }
 
     private IEnumerator LoadData()

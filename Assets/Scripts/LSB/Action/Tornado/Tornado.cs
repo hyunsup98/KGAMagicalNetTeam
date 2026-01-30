@@ -68,20 +68,39 @@ public class Tornado : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
 
-        if (!IsValidTarget(other))
-            return;
-        if (!ChunkNodeCheck(other))
-            return;
-        if (!other.TryGetComponent<IMagicInteractable>(out IMagicInteractable obj))
-            return;
-        if (!other.TryGetComponent<Rigidbody>(out Rigidbody rb))
-            return;
+        if (!IsValidTarget(other)) return;
+        if (!ChunkNodeCheck(other)) return;
+        if (!other.TryGetComponent<IMagicInteractable>(out IMagicInteractable obj)) return;
 
-        if (!activeTargets.Contains(rb) && obj.CheckInteractable(gameObject, data, shooterID))
+        // 기본적으로는 부딪힌 녀석의 리지드바디를 가져옴
+        Rigidbody targetRb = other.GetComponent<Rigidbody>();
+        if (targetRb == null) return;
+
+        if(obj.CheckInteractable(gameObject, data, shooterID))
         {
-            activeTargets.Add(rb);
+            // 대상이 래그돌 컨트롤러를 가지고 있다면, Root 대신 Hips를 타겟으로 교체
+            HumanoidRagdollController ragdollCtrl = other.GetComponent<HumanoidRagdollController>();
 
-            obj?.OnMagicInteract(gameObject, data, shooterID);
+            if (ragdollCtrl != null)
+            {
+                // 토네이도 상태 알림
+                ragdollCtrl.SetTornadoState(true);
+
+                // hip을 가져와서 타겟 변경
+                Rigidbody hips = ragdollCtrl.GetRagdollHips();
+                if (hips != null)
+                {
+                    targetRb = hips;
+                }
+            }
+
+            // 중복이 아니면 타겟 리스트에 추가
+            if (!activeTargets.Contains(targetRb))
+            {
+                activeTargets.Add(targetRb);
+
+                obj.OnMagicInteract(gameObject, data, shooterID);
+            }
         }
     }
 
@@ -90,16 +109,18 @@ public class Tornado : MonoBehaviourPun
         PhotonView targetPV = other.GetComponentInParent<PhotonView>();
 
         if (targetPV == null) return true;
-        if (targetPV.OwnerActorNr == shooterID) return false;
-
 
         if (targetPV.CompareTag("Player") || other.CompareTag("Player"))
         {
+            // 자해인지 판단
+            if (targetPV.OwnerActorNr == shooterID)
+            {
+                return false;
+            }
+
+            // 다른 플레이어라면 아군 오사판정 체크
             bool isFriendlyFireOn = PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.FRIENDLYFIRE);
-
-            if (isFriendlyFireOn) return true;
-
-            return false;
+            return isFriendlyFireOn;
         }
 
         return true;
@@ -116,10 +137,22 @@ public class Tornado : MonoBehaviourPun
 
     private void OnTriggerExit(Collider other)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null && activeTargets.Contains(rb))
+        HumanoidRagdollController ragdollCtrl = other.GetComponent<HumanoidRagdollController>();
+        if (ragdollCtrl != null)
         {
-            ReleaseTarget(rb, false);
+            Rigidbody hips = ragdollCtrl.GetRagdollHips();
+            if (hips != null && activeTargets.Contains(hips))
+            {
+                ReleaseTarget(hips, false);
+            }
+        }
+        else
+        {
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            if (rb != null && activeTargets.Contains(rb))
+            {
+                ReleaseTarget(rb, false);
+            }
         }
     }
 
@@ -131,29 +164,32 @@ public class Tornado : MonoBehaviourPun
         {
             if (rb == null) continue;
 
-
             Vector3 objectPos = rb.position;
             Vector3 offset = objectPos - transform.position;
             float distance = offset.magnitude;
 
+            // 너무 높이 올라가면 놓아줌
             if (offset.y > data.releaseHeight)
             {
                 toRelease.Add(rb);
                 continue;
             }
 
+            // 회전 및 인력 계산
             Vector3 dirToCenter = -offset.normalized;
             Vector3 horizontalDir = new Vector3(dirToCenter.x, 0, dirToCenter.z).normalized;
-            Vector3 tangentDir = Vector3.Cross(horizontalDir, Vector3.up).normalized;
+            Vector3 tangentDir = Vector3.Cross(horizontalDir, Vector3.up).normalized; // 회전 방향
 
             float distFactor = Mathf.Clamp01(distance / data.maxDistance);
             float currentSuction = Mathf.Lerp(data.suctionSpeed, data.suctionSpeed * 2.5f, distFactor);
+
+            // 바닥에 끌리지 않게 높이 보정
             float heightFactor = (offset.y < 2.0f) ? 2.0f : 1.0f;
             float currentLift = data.liftSpeed * heightFactor;
 
             Vector3 targetVelocity = (tangentDir * data.orbitSpeed) + (horizontalDir * currentSuction);
             Vector3 newVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.fixedDeltaTime * data.captureStrength);
-            newVelocity.y = currentLift;
+            newVelocity.y = currentLift; // Y축 힘 적용
 
             rb.linearVelocity = newVelocity;
         }
@@ -172,6 +208,12 @@ public class Tornado : MonoBehaviourPun
 
             if (rb != null)
             {
+                var ragdollCtrl = rb.GetComponentInParent<HumanoidRagdollController>();
+                if (ragdollCtrl != null)
+                {
+                    ragdollCtrl.SetTornadoState(false);
+                }
+
                 rb.useGravity = true;
                 rb.GetComponent<IPhysicsObject>()?.OnStatusChange(false);
 

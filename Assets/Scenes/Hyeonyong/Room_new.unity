@@ -1341,7 +1341,7 @@ MonoBehaviour:
     EnableLobbyStatistics: 0
     NetworkLogging: 1
   ShowSettings: 1
-  AutoConnectAndJoin: 0
+  AutoConnectAndJoin: 1
   usePunAppSettings: 1
   usePunAuthValues: 1
 --- !u!4 &62442804
@@ -10926,6 +10926,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  nickInput: {fileID: 0}
+  loginBtn: {fileID: 0}
+  registerBtn: {fileID: 0}
+  mouseSensivitySlider: {fileID: 1833500826}
+  checkMouseXInvert: {fileID: 1807966099}
+  checkMouseYInvert: {fileID: 1677195154}
+  thirdPersonCamera: {fileID: 1438930775}
+  languageDropDown: {fileID: 1940812090}
+  graphicQualityDropDown: {fileID: 569536781}
+  resolutionDropDown: {fileID: 389242340}
+  resolutionWindowDropDown: {fileID: 153914411}
   bgmSound: {fileID: 1272325734}
   bgmSoundMute: {fileID: 675947744}
   sfxSound: {fileID: 1768908814}
@@ -10934,27 +10946,19 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 876037699}
   micSound: {fileID: 913777466}
   micSoundMute: {fileID: 1986390591}
-  graphicQualityDropDown: {fileID: 569536781}
-  mouseSensivitySlider: {fileID: 1833500826}
-  checkMouseXInvert: {fileID: 1807966099}
-  checkMouseYInvert: {fileID: 1677195154}
-  languageDropDown: {fileID: 1940812090}
-  Panels: []
-  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  resolutionDropDown: {fileID: 389242340}
-  resolutionWindowDropDown: {fileID: 153914411}
-  thirdPersonCamera: {fileID: 1438930775}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 0}
   myInfoPanel: {fileID: 0}
   IconPanel: {fileID: 1120793920}
   moneyCount: {fileID: 0}
   gameSettingUI: {fileID: 117485355}
-  onGame: 1
   settingUIGameObject:
   - {fileID: 229805471}
   - {fileID: 118336605}
   - {fileID: 770436058}
-  uiName: GameMenu
+  Panels: []
+  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onGame: 1
 --- !u!4 &693229742
 Transform:
   m_ObjectHideFlags: 0
