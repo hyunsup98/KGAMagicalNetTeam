@@ -218,6 +218,13 @@ public class PlayerController : MonoBehaviourPun, IDamageable, IMagicInteractabl
             TakeDamage(data.damage);
         }
     }
+
+    public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        if (data.magicType == MagicType.Tornado)
+            return false;
+        return true;
+    }
 }
 #region 레거시 코드
 //using Photon.Pun;
