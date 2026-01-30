@@ -1,8 +1,6 @@
 using BzKovSoft.RagdollTemplate.Scripts.Charachter;
-using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using System.Collections;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -163,8 +161,18 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
 
         if ((agent != null))
         {
-            agent.Warp(pos);//위치재설정
-            agent.enabled = true;
+            if (agent.Warp(pos))
+            {
+                agent.enabled = true;
+                agent.isStopped = false;
+                agent.updatePosition = true;
+                agent.updateRotation = true;
+            }
+            else
+            {
+                agent.enabled = true;
+                agent.isStopped = false;
+            }
         }
 
         //시민 경비 리커버리 시 행동 수행(방장만)

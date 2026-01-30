@@ -223,7 +223,13 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
         if (col) col.enabled = false;
 
         if (Anim != null) Anim.enabled = false;
-        EnableRagdoll();
+
+        //EnableRagdoll 메서드 삭제하고 대체
+        var ragdollCtrl = GetComponent<HumanoidRagdollController>();
+        if (ragdollCtrl != null)
+        { 
+            ragdollCtrl.ApplyRagdoll(Vector3.zero);
+        }
 
         this.enabled = false;
 
@@ -246,6 +252,14 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         ragdollColliders = GetComponentsInChildren<Collider>();
 
+        Rigidbody rootRb = GetComponent<Rigidbody>();
+        if (rootRb != null)
+        {
+            rootRb.isKinematic = true;
+            rootRb.useGravity = false;
+            rootRb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        }
+
         foreach (Rigidbody rb in ragdollRigidbodies)
         {
             //본체는 제외
@@ -253,27 +267,6 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
             {
                 rb.isKinematic = true; //애니메이션을 따라가도록 고정
                 rb.useGravity = false;
-            }
-        }
-    }
-    //사망 시 랙돌 활성화
-    private void EnableRagdoll()
-    {
-        foreach (Rigidbody rb in ragdollRigidbodies)
-        {
-            if (rb.gameObject != this.gameObject)
-            {
-                rb.isKinematic = false; //물리 연산 시작
-                rb.useGravity = true;
-            }
-        }
-
-        foreach (Collider col in ragdollColliders)
-        {
-            if (col.gameObject != this.gameObject)
-            {
-                col.enabled = true; //충돌체 켜기
-                col.isTrigger = false;
             }
         }
     }
