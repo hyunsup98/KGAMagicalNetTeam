@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPun, IDamageable, IMagicInteractable
 {
-    PhotonView pv;
+    public PhotonView pv;
     PhotonVoiceView pvv;
 
     private PlayableCharacter playableCharacter;
