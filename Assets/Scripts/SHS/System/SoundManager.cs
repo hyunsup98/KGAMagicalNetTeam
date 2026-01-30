@@ -10,7 +10,7 @@ public enum Soundtype
     SFX,        // 효과음
 }
 
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : SingletonForSoundManager<SoundManager>
 {
     [Header("오디오 믹서")]
     [field: SerializeField] public AudioMixer MasterAudioMixer { get; private set; }
