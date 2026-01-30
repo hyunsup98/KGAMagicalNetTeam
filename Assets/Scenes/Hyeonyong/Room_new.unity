@@ -23604,7 +23604,7 @@ MonoBehaviour:
   needMoneyCount: 5
   sceneName:
   - GameMapOne
-  - GameMapOne
+  - GameMapTwoSensei
   maxRound: 2
 --- !u!4 &1596086092
 Transform:
