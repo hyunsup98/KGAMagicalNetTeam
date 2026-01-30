@@ -159,9 +159,12 @@ public class FirebaseAuthManager : Singleton<FirebaseAuthManager>
 
         if (!gameObject.activeSelf)
             yield break;
-        loginButton?.gameObject.SetActive(checkEmail);
-        registerButton?.gameObject.SetActive(!checkEmail);
-        nickField.interactable = !checkEmail;
+        if(loginButton !=null)
+            loginButton.gameObject.SetActive(checkEmail);
+        if(registerButton != null)
+            registerButton.gameObject.SetActive(!checkEmail);
+        if(nickField != null)
+            nickField.interactable = !checkEmail;
         if (nickField.interactable == false)
         {
             nickField.text = "";

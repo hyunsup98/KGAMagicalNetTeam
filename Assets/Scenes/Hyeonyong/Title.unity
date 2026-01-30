@@ -1571,7 +1571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000011444092
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4517,6 +4517,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  nickInput: {fileID: 0}
+  loginBtn: {fileID: 0}
+  registerBtn: {fileID: 0}
+  mouseSensivitySlider: {fileID: 2130860617}
+  checkMouseXInvert: {fileID: 2004079097}
+  checkMouseYInvert: {fileID: 1362940395}
+  thirdPersonCamera: {fileID: 0}
+  languageDropDown: {fileID: 1021905474}
+  graphicQualityDropDown: {fileID: 1807808007}
+  resolutionDropDown: {fileID: 680165445}
+  resolutionWindowDropDown: {fileID: 1227379875}
   bgmSound: {fileID: 1631574769}
   bgmSoundMute: {fileID: 2010796961}
   sfxSound: {fileID: 1297135502}
@@ -4525,26 +4537,18 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 1312165206}
   micSound: {fileID: 307205801}
   micSoundMute: {fileID: 1826955443}
-  graphicQualityDropDown: {fileID: 1807808007}
-  mouseSensivitySlider: {fileID: 2130860617}
-  checkMouseXInvert: {fileID: 2004079097}
-  checkMouseYInvert: {fileID: 1362940395}
-  languageDropDown: {fileID: 1021905474}
-  Panels:
-  - {fileID: 1341163566}
-  - {fileID: 78231490}
-  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  resolutionDropDown: {fileID: 680165445}
-  resolutionWindowDropDown: {fileID: 1227379875}
-  thirdPersonCamera: {fileID: 0}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 0}
   myInfoPanel: {fileID: 0}
   IconPanel: {fileID: 0}
   moneyCount: {fileID: 0}
   gameSettingUI: {fileID: 0}
-  onGame: 0
   settingUIGameObject: []
-  uiName: GameMenu
+  Panels:
+  - {fileID: 1341163566}
+  - {fileID: 78231490}
+  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onGame: 0
 --- !u!4 &702415784
 Transform:
   m_ObjectHideFlags: 0
@@ -9416,7 +9420,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478456492}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 318443348}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1478456492
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -54,4 +54,14 @@ public class TitleManager : MonoBehaviourPunCallbacks
         Debug.Log("방 입장 및 룸 씬으로 전환 요청");
         SceneManager.LoadScene(roomSceneName);
     }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // 실제 빌드된 게임에서 실행 중일 때
+        Application.Quit();
+#endif
+    }
 }
