@@ -77,7 +77,7 @@ public class Tornado : MonoBehaviourPun
         if (!other.TryGetComponent<Rigidbody>(out Rigidbody rb))
             return;
 
-        if (!activeTargets.Contains(rb))
+        if (!activeTargets.Contains(rb) && obj.CheckInteractable(gameObject, data, shooterID))
         {
             activeTargets.Add(rb);
 

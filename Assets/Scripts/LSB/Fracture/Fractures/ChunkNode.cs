@@ -245,4 +245,10 @@ public class ChunkNode : MonoBehaviour, IMagicInteractable
             Unfreeze();
         }
     }
+
+    public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        if(IsIndestructible) return false;
+        return true;
+    }
 }

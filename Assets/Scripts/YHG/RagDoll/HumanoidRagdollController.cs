@@ -220,9 +220,23 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
 
     public void TornadoReaction(MagicDataSO data)
     {
-        ApplyRagdoll(Vector3.up);
-        Debug.LogError("토네이도 맞음");
         if (baseAI != null)
-            baseAI.TakeDamage(data.damage);
+            baseAI.TakeDamage(1);
+
+        ApplyRagdoll(Vector3.up * 2.0f);
+    }
+
+    public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        if (baseAI != null && baseAI.CurrentHP <= 0) return false;
+
+        if (data.magicType == MagicType.Tornado)
+        {
+            return true;
+        }
+
+        if (isRagdollActive) return false;
+
+        return true;
     }
 }

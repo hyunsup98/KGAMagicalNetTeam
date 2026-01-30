@@ -191,4 +191,9 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
             TakeDamage(data.damage);
         }
     }
+
+    public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        return false;
+    }
 }
