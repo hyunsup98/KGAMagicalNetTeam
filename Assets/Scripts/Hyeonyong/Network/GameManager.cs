@@ -252,7 +252,7 @@ public class GameManager : PhotonSingleton<GameManager>
 
     public void ExitGame()
     {
-        PunVoiceClient.Instance.Disconnect();
+        //PunVoiceClient.Instance.Disconnect();
         LeaveRoom();
         //SceneManager.LoadSceneAsync("Lobby");
     }
