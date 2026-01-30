@@ -12,7 +12,7 @@ public class PlayerInteractState : PlayerStateBase, IInteractable
 
     public Transform ActorTrans => player.currentTransform;
 
-    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, InteractionDataSO interactionData = null, HashSet<IInteractable> receivers = null) 
+    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, InteractionDataSO interactionData = null) 
         : base(player, stateMachine)
     {
         this.receivers = receivers;
