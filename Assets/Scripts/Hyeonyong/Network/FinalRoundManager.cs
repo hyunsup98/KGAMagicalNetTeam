@@ -1,7 +1,8 @@
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine;
+using Photon.Voice.PUN;
 using System.Collections;
+using UnityEngine;
 
 
 public class FinalRoundManager : MonoBehaviourPunCallbacks
@@ -15,6 +16,7 @@ public class FinalRoundManager : MonoBehaviourPunCallbacks
     }
     private void Start()
     {
+        PunVoiceClient.Instance.Disconnect();
         SoundManager.Instance.PlayBGM(loseOrWinAudio);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

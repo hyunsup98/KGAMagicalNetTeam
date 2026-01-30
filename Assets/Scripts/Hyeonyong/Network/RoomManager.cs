@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Voice.PUN;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -44,7 +45,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private IEnumerator Start()
     {
-
+        //펀 보이스 클라이언트 연동
+        PunVoiceClient.Instance.ConnectAndJoinRoom();
         SoundManager.Instance.PlayBGM(RoomAudio);
         //yield return new WaitUntil(() => FirebaseAuthManager.Instance != null);//파이어베이스 초기화 대기
         if (FirebaseAuthManager.Instance != null)
