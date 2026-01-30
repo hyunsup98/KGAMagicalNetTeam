@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hyeonyong/Login.unity
     guid: 6a43dff473fb7da4c93dfbcb5affbe37
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hyeonyong/Game.unity
     guid: ed790c0ecc1534440aea1a1c5bc33b7f
   - enabled: 1
@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hyeonyong/Room_new.unity
     guid: d9935139eb8b3604f845455319048757
+  - enabled: 1
+    path: Assets/Scenes/Sensei/GameMapTwoSensei.unity
+    guid: f940c5bc27b76d448a3edf6ca068436d
   - enabled: 1
     path: Assets/Scenes/Hyeonyong/Lose.unity
     guid: 72074cf83c979ef48b54ed034bfa21e3

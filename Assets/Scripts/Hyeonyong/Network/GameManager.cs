@@ -27,7 +27,7 @@ public class GameManager : PhotonSingleton<GameManager>
     public InventoryWheelLogic InventoryWheel { get { return _inventoryWheelLogic; } set { _inventoryWheelLogic = value; } }
 
     [SerializeField] int needMoneyCount = 5;
-    [SerializeField] string[] sceneName;//라운드별 씬 네임 작성
+    public string[] sceneName;//라운드별 씬 네임 작성
     [SerializeField] int maxRound=2;
     void Start()//씬이 너무 빨리 불러와져서 스타트가 room 들어가기 전에 호출되는 것이 문제임
     {
