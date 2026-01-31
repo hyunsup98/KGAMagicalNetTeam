@@ -124,8 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa45094a3d7089f40a6f6b7511c47432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrapObject
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
   damage: 5
-  damageCoolTime: 0
