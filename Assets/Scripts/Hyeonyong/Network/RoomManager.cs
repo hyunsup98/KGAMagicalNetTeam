@@ -325,6 +325,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void OpenRoomTab(InputAction.CallbackContext context)
     {
+        //인벤토리 열려있으면 열지 못함
+        if ((GameManager.Instance.InventoryWheel != null))
+        {
+            if (GameManager.Instance.InventoryWheel.IsInventoryUIOn)
+                return;
+        }
         Debug.Log("탭 열기 시도");
         bool onOpen = !roomTab.activeSelf;
         if (onOpen)
