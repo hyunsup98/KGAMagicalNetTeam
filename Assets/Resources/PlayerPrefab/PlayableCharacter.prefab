@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01f858a9814fe4d8322a121492791c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  pv: {fileID: 0}
   playerView: {fileID: -6589114128582020185}
   playerInfoPrefab: {fileID: 2214901045480714207, guid: 3ac7a7d22cedf6948ac3603fcbdb0786, type: 3}
   myInfoPrefab: {fileID: 6991229508053554550, guid: 2df120cc2f933184785badc1852aa7f7, type: 3}

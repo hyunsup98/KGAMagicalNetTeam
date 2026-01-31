@@ -7272,6 +7272,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  nickInput: {fileID: 0}
+  loginBtn: {fileID: 0}
+  registerBtn: {fileID: 0}
+  mouseSensivitySlider: {fileID: 569741402}
+  checkMouseXInvert: {fileID: 2011218056}
+  checkMouseYInvert: {fileID: 1725676456}
+  thirdPersonCamera: {fileID: 264007602}
+  languageDropDown: {fileID: 553352863}
+  graphicQualityDropDown: {fileID: 864484672}
+  resolutionDropDown: {fileID: 1189273120}
+  resolutionWindowDropDown: {fileID: 2082510902}
   bgmSound: {fileID: 43563925}
   bgmSoundMute: {fileID: 154585035}
   sfxSound: {fileID: 1189004955}
@@ -7280,27 +7292,19 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 482739224}
   micSound: {fileID: 985800039}
   micSoundMute: {fileID: 1406139575}
-  graphicQualityDropDown: {fileID: 864484672}
-  mouseSensivitySlider: {fileID: 569741402}
-  checkMouseXInvert: {fileID: 2011218056}
-  checkMouseYInvert: {fileID: 1725676456}
-  languageDropDown: {fileID: 553352863}
-  Panels: []
-  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  resolutionDropDown: {fileID: 1189273120}
-  resolutionWindowDropDown: {fileID: 2082510902}
-  thirdPersonCamera: {fileID: 264007602}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 788639308}
   myInfoPanel: {fileID: 1935912572}
   IconPanel: {fileID: 1550674111}
   moneyCount: {fileID: 1750556870}
   gameSettingUI: {fileID: 196490467}
-  onGame: 1
   settingUIGameObject:
   - {fileID: 1611563477}
   - {fileID: 739301744}
   - {fileID: 994819676}
-  uiName: GameMenu
+  Panels: []
+  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onGame: 1
 --- !u!4 &235416756
 Transform:
   m_ObjectHideFlags: 0
@@ -8144,11 +8148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  cinemachineCamera: {fileID: 0}
+  axisController: {fileID: 0}
   target: {fileID: 0}
-  distance: 5
-  pitchLimits: {x: -20, y: 80}
-  Offset: {x: 1, y: 1.5, z: 0}
   sensitivity: 50
   invertX: 0
   invertY: 0
@@ -43616,7 +43618,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1499786639}
+      - m_Target: {fileID: 994819676}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

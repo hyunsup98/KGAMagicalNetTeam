@@ -10933,7 +10933,7 @@ MonoBehaviour:
   mouseSensivitySlider: {fileID: 1833500826}
   checkMouseXInvert: {fileID: 1807966099}
   checkMouseYInvert: {fileID: 1677195154}
-  thirdPersonCamera: {fileID: 0}
+  thirdPersonCamera: {fileID: 6889061143988926986}
   languageDropDown: {fileID: 1940812090}
   graphicQualityDropDown: {fileID: 569536781}
   resolutionDropDown: {fileID: 389242340}
@@ -11281,7 +11281,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 735329319}
+      - m_Target: {fileID: 770436058}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

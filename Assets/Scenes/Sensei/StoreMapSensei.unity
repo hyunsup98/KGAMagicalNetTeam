@@ -493,11 +493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  cinemachineCamera: {fileID: 0}
+  axisController: {fileID: 0}
   target: {fileID: 0}
-  distance: 5
-  pitchLimits: {x: -20, y: 80}
-  Offset: {x: 1, y: 1.5, z: 0}
   sensitivity: 50
   invertX: 0
   invertY: 0
@@ -19786,7 +19784,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1973127151}
+      - m_Target: {fileID: 553571274}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -21077,6 +21075,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  nickInput: {fileID: 0}
+  loginBtn: {fileID: 0}
+  registerBtn: {fileID: 0}
+  mouseSensivitySlider: {fileID: 392804457}
+  checkMouseXInvert: {fileID: 121989668}
+  checkMouseYInvert: {fileID: 51503285}
+  thirdPersonCamera: {fileID: 35872780}
+  languageDropDown: {fileID: 1259797543}
+  graphicQualityDropDown: {fileID: 193287972}
+  resolutionDropDown: {fileID: 1156891505}
+  resolutionWindowDropDown: {fileID: 2028331935}
   bgmSound: {fileID: 295980490}
   bgmSoundMute: {fileID: 1748389757}
   sfxSound: {fileID: 447023806}
@@ -21085,27 +21095,19 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 427016826}
   micSound: {fileID: 427539155}
   micSoundMute: {fileID: 120099147}
-  graphicQualityDropDown: {fileID: 193287972}
-  mouseSensivitySlider: {fileID: 392804457}
-  checkMouseXInvert: {fileID: 121989668}
-  checkMouseYInvert: {fileID: 51503285}
-  languageDropDown: {fileID: 1259797543}
-  Panels: []
-  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  resolutionDropDown: {fileID: 1156891505}
-  resolutionWindowDropDown: {fileID: 2028331935}
-  thirdPersonCamera: {fileID: 35872780}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 1906860198}
   myInfoPanel: {fileID: 98979073}
   IconPanel: {fileID: 1716272075}
   moneyCount: {fileID: 1188340642}
   gameSettingUI: {fileID: 1416813645}
-  onGame: 1
   settingUIGameObject:
   - {fileID: 380923346}
   - {fileID: 2004365454}
   - {fileID: 553571274}
-  uiName: GameMenu
+  Panels: []
+  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onGame: 1
 --- !u!4 &2063923250
 Transform:
   m_ObjectHideFlags: 0
