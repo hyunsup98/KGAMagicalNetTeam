@@ -12,8 +12,8 @@ public class InteractionManager : Singleton<InteractionManager>
 {
     [SerializeField] private PlayableDirector pd;
 
-    private IInteractable executer;
-    private List<IInteractable> receivers = new List<IInteractable>();
+    private IInteract executer;
+    private List<IInteract> receivers = new List<IInteract>();
 
     private BaseInteractSystem interactSystem;      // 상호작용 클래스 캐싱
 
@@ -24,7 +24,7 @@ public class InteractionManager : Singleton<InteractionManager>
         base.Awake();
     }
 
-    public void RequestInteraction(InteractionDataSO data, IInteractable executer, params IInteractable[] receivers)
+    public void RequestInteraction(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
     {
         if (data == null || executer == null || receivers == null) return;
 
@@ -57,7 +57,7 @@ public class InteractionManager : Singleton<InteractionManager>
     }
 
     // 타임라인 포지션 등 세팅
-    private void TimelineSetting(InteractionDataSO data, IInteractable executer, params IInteractable[] receivers)
+    private void TimelineSetting(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
     {
         if (data == null) return;
         if (ProjectManager.Instance == null || ProjectManager.Instance.CinemachineControl == null) return;
@@ -87,7 +87,7 @@ public class InteractionManager : Singleton<InteractionManager>
     }
 
     // 트랙에 맞게 매칭
-    private void SetTrackValue(InteractionDataSO data, TrackAsset[] tracks, IInteractable executer, params IInteractable[] receivers)
+    private void SetTrackValue(InteractionDataSO data, TrackAsset[] tracks, IInteract executer, params IInteract[] receivers)
     {
         pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
         pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Executer"))], executer.ActorTrans.gameObject);
@@ -109,7 +109,7 @@ public class InteractionManager : Singleton<InteractionManager>
     }
 
     // 기준 트랜스폼에 맞게 나머지 트랙들의 오브젝트 트랜스폼도 반영
-    private void SetTransform(InteractionDataSO data, IInteractable executer, params IInteractable[] receivers)
+    private void SetTransform(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
     {
         // 누가 기준 트랜스폼인지에 따라 위치 보정
         Transform pivotTrans;

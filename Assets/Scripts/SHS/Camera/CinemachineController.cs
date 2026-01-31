@@ -43,6 +43,7 @@ public class CinemachineController : MonoBehaviour
 
     private void OnDisable()
     {
-        ProjectManager.Instance.CinemachineControl = null;
+        if(ProjectManager.Instance != null)
+            ProjectManager.Instance.CinemachineControl = null;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Timeline;
 
-public class SHSTest : MonoBehaviour, IInteractable
+public class SHSTest : MonoBehaviour, IInteract
 {
     public bool IsInteracted { get; private set; }
 

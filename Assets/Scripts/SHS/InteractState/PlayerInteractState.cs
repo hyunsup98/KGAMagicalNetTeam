@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerInteractState : PlayerStateBase, IInteractable
+public class PlayerInteractState : PlayerStateBase, IInteract
 {
-    public HashSet<IInteractable> receivers = new HashSet<IInteractable>();     // 상호작용을 할 타겟들
+    public HashSet<IInteract> receivers = new HashSet<IInteract>();     // 상호작용을 할 타겟들
 
     public bool IsInteracted { get; private set; }  // IInteractable 인터페이스 필드 → 상호작용이 진행 중이면 true
 
@@ -12,19 +12,27 @@ public class PlayerInteractState : PlayerStateBase, IInteractable
 
     public Transform ActorTrans => player.currentTransform;
 
-    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, InteractionDataSO interactionData = null) 
+    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, HashSet<IInteract> receivers, InteractionDataSO interactionData = null) 
         : base(player, stateMachine)
     {
         this.receivers = receivers;
+        this.interactionData = interactionData;
     }
 
-    public virtual void SetTarget(IInteractable receivers)
+    public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, IInteract receiver, InteractionDataSO interactionData = null)
+        : base(player, stateMachine)
+    {
+        receivers.Add(receiver);
+        this.interactionData = interactionData;
+    }
+
+    public virtual void SetTarget(IInteract receivers)
     {
         this.receivers.Clear();
         this.receivers.Add(receivers);
     }
 
-    public virtual void SetTarget(HashSet<IInteractable> receivers)
+    public virtual void SetTarget(HashSet<IInteract> receivers)
     {
         this.receivers.Clear();
         this.receivers = receivers;
@@ -39,8 +47,11 @@ public class PlayerInteractState : PlayerStateBase, IInteractable
     {
         base.Enter();
 
-        player.InputHandler.CanInteractMotion = false;
-        InteractionManager.Instance.RequestInteraction(interactionData, this, receivers.ToArray());
+        if(interactionData != null)
+        {
+            player.InputHandler.CanInteractMotion = false;
+            InteractionManager.Instance.RequestInteraction(interactionData, this, receivers.ToArray());
+        }
     }
 
     public override void Exit()

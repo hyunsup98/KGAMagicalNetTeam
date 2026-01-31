@@ -290,19 +290,20 @@ public class PlayableCharacter : MonoBehaviourPun
 
         if(Physics.Raycast(transform.position + new Vector3(0, 1, 0), Camera.main.transform.forward, out RaycastHit hit, checkDistance, canInteractLayer))
         {
-            if(hit.collider.TryGetComponent<IInteractable>(out var interact) && transform.IsTargetInDirection(interact.ActorTrans, DirectionType.Backward, 110f))
+            if(hit.collider.TryGetComponent<IInteract>(out var interact) && transform.IsTargetInDirection(interact.ActorTrans, DirectionType.Backward, 110f))
             {
                 // todo: 상호작용 가능 UI 띄우기 등 실행
                 InputHandler.CanInteractMotion = true;
 
                 if (InteractState == null)
                 {
-                    InteractState = new PlayerAssassinateState(this, StateMachine);
+                    InteractState = new PlayerAssassinateState(this, StateMachine, interact, interact.interactionData);
                 }
 
                 // 상호작용 대상이 다를 경우 갱신
                 if (!InteractState.receivers.Contains(interact))
                 {
+                    Debug.Log("상태 또 진입");
                     InteractState.SetTarget(interact);
                     InteractState.Init(interact.interactionData);
                 }

@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
+  cinemachineCamera: {fileID: 116397336752664311}
   axisController: {fileID: 1731513921594405301}
   target: {fileID: 0}
   sensitivity: 50
