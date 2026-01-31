@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1188092981143614753}
   - component: {fileID: 5612116329769571868}
-  - component: {fileID: 3444269921671779059}
   - component: {fileID: 877263997997129671}
   - component: {fileID: 633835262167808727}
+  - component: {fileID: 1875674307199563474}
   m_Layer: 0
   m_Name: Book_3_Brown Sensei Scaled up 1
   m_TagString: Untagged
@@ -60,20 +60,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.414, y: 0.07, z: 0.33}
   m_Center: {x: 0, y: -0.027, z: 0}
---- !u!114 &3444269921671779059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2669968911237614072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d9f2a8bca61f647bbe38e1f0eb51dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurchasableScriptableObject
-  _itemData: {fileID: 11400000, guid: e8c3c0ad6ad875346984481f51f21ab0, type: 2}
-  _cost: 2
 --- !u!114 &877263997997129671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +96,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ColorChangerMulti
   targetColor: {r: 0, g: 0.04085064, b: 1, a: 1}
   blendStrength: 0.5
+--- !u!114 &1875674307199563474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669968911237614072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dad4bd59a9496488c507d72fa3a7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PurchasableItem
+  _itemData: {fileID: 0}
+  _cost: 2
 --- !u!1 &2719222853520735596
 GameObject:
   m_ObjectHideFlags: 0

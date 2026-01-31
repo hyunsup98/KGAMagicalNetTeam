@@ -1167,6 +1167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: fbadf4988709712469694beead882a26, type: 2}
     - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_Name
       value: Book_3_Brown Sensei Scaled up 1 (1)
@@ -9278,6 +9282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: e8c3c0ad6ad875346984481f51f21ab0, type: 2}
     - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_Name
       value: Book_3_Brown Sensei Scaled up 1
@@ -12746,6 +12754,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: c45f7a598d4d9c74c895023da7ca3956, type: 2}
     - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_Name
       value: Book_3_Brown Sensei Scaled up 1 (3)
@@ -17766,6 +17778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78b14261e6e16134495bce0e3e3800f1, type: 2}
     - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_Name
       value: Book_3_Brown Sensei Scaled up 1 (2)

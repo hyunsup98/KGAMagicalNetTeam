@@ -41,6 +41,6 @@ public class PurchasableItem : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
