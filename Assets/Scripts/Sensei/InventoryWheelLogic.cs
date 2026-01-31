@@ -32,6 +32,13 @@ public class InventoryWheelLogic : MonoBehaviour
     void OpenInventory(bool left)
     {
         Debug.Log("인벤토리 열림");
+        if (UIManager.Instance.checkOpenUI)
+        {
+            return;
+        }
+
+
+        UIManager.Instance.checkOpenUI = true;
         if (_inventoryUI == null)
             return;
         if (!_isInventoryUIOn)
@@ -156,6 +163,12 @@ public class InventoryWheelLogic : MonoBehaviour
         {
             temp = 1;
         }
+
+        if (_isInventoryUIOn == false)
+        {
+            return;
+        }
+        
 
         if (_qOrE != temp)
         {
@@ -293,6 +306,7 @@ public class InventoryWheelLogic : MonoBehaviour
         {
             return;
         }
+        UIManager.Instance.checkOpenUI = false;
         //GameManager.Instance.LocalPlayer.GetComponent<PlayerCameraSetup>().cameraScript.SetControl(true);
         GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.SetControl(true);
         //if (EventSystem.current.IsPointerOverGameObject())
