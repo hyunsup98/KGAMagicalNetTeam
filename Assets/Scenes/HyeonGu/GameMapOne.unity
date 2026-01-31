@@ -17388,7 +17388,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9bdf685f0af741b4dbfed7c22c70bbf2, type: 3}
   _guardManager: {fileID: 1463418896}
   _image: {fileID: 530571253}
-  _bellClip: {fileID: 8300000, guid: 4777cbdef82aeaf48a54a61f82dcfb2e, type: 3}
+  _bellClip: {fileID: 8300000, guid: 6ad13e9f9e0cae4469338e59bfabc28d, type: 3}
 --- !u!114 &530571253
 MonoBehaviour:
   m_ObjectHideFlags: 0
