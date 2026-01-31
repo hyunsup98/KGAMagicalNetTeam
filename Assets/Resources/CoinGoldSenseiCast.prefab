@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8384104354642508213}
   - component: {fileID: 7406926450061482030}
   - component: {fileID: 4232687290254250451}
+  - component: {fileID: -8359243430847699883}
   m_Layer: 0
-  m_Name: CoinGoldSensei
+  m_Name: CoinGoldSenseiCast
   m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4884,3 +4885,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinItself
   coinData: {fileID: 11400000, guid: 4afb6d7075bca2b44b6d2f1055d81439, type: 2}
+--- !u!54 &-8359243430847699883
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547170938511414599}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
