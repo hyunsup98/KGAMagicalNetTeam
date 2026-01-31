@@ -6,27 +6,35 @@ using UnityEngine.InputSystem;
 public class CoinLogic : MonoBehaviour
 {
     [SerializeField] float _pickupRange = 10f;
-
     [SerializeField] AudioClip _purchaseSound;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector3 _debugRayStart;
+    private Vector3 _debugRayEnd;
+
+
     void Start()
     {
      
         //InputSystem.actions.FindActionMap("Player").FindAction("Interact").performed += PickupCoin;
-        Debug.Log(GetComponent<PlayerInputHandler>());
-        GetComponent<PlayerInputHandler>().OnInteractEvent += PickupOrSpendCoin;
+
+        if (GetComponent<PlayerInputHandler>() != null)
+        {
+            Debug.Log(GetComponent<PlayerInputHandler>());
+            GetComponent<PlayerInputHandler>().OnInteractEvent += PickupOrSpendCoin;
+        }
 
     }
 
     void OnDestroy()
     {
-        GetComponent<PlayerInputHandler>().OnInteractEvent -= PickupOrSpendCoin;
-       // InputSystem.actions.FindActionMap("Player").FindAction("Interact").performed -= PickupCoin;
+        if (GetComponent<PlayerInputHandler>() != null)
+        {
+            GetComponent<PlayerInputHandler>().OnInteractEvent -= PickupOrSpendCoin;
+        }
+        // InputSystem.actions.FindActionMap("Player").FindAction("Interact").performed -= PickupCoin;
     }
 
-    private Vector3 _debugRayStart;
-    private Vector3 _debugRayEnd;
+    
 
     private void OnDrawGizmos()
     {
@@ -42,10 +50,12 @@ public class CoinLogic : MonoBehaviour
         if (GetComponent<PhotonView>().IsMine)
         {
             _debugRayStart = Camera.main.transform.position;
-        _debugRayEnd = _debugRayStart + Camera.main.transform.forward * _pickupRange;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit[] hits = Physics.RaycastAll(ray, _pickupRange);
-        int index = 0;
+            _debugRayEnd = _debugRayStart + Camera.main.transform.forward * _pickupRange;
+
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit[] hits = Physics.RaycastAll(ray, _pickupRange);
+
+            int index = 0;
             foreach (var hit in hits)
             {
                 index++;
@@ -62,27 +72,39 @@ public class CoinLogic : MonoBehaviour
                 if (hit.transform.gameObject.GetComponent<CoinItself>() != null)
                 {
 
-                    GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.AddItem(hit.transform.gameObject.GetComponent<CoinItself>().CoinData);
+                    var coin = hit.transform.gameObject.GetComponent<CoinItself>();
 
-                    hit.transform.gameObject.GetComponent<CoinItself>().RequestDestroy();
+                    GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.AddItem(coin.CoinData);
                     //Debug.Log("Coin Picked Up! Really");
-                }
 
-                else if (hit.transform.gameObject.GetComponent<PurchasableScriptableObject>() != null)
+                    coin.RequestDestroy();
+                }
+                else if (hit.transform.gameObject.GetComponent<PurchasableItem>() != null)
                 {
 
-                    if (GameManager.Instance.CurTeamMoney() >= (hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().Cost))
+                    PurchasableItem shopItem = hit.transform.gameObject.GetComponent<PurchasableItem>();
+
+                    if (GameManager.Instance.CurTeamMoney() >= shopItem.Cost)
                     {
                         SoundManager.Instance.PlaySFX(_purchaseSound, 1f, 100f, transform.position);
+                        #region Legacy Code
                         //Hashtable customProperties = new Hashtable();
                         //customProperties["MoneyCount"] = (int)PhotonNetwork.CurrentRoom.CustomProperties["MoneyCount"] - (hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().Cost);
                         //PhotonNetwork.CurrentRoom.SetCustomProperties(customProperties); // = (int)PhotonNetwork.CurrentRoom.CustomProperties["MoneyCount"] - (hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().Cost);
-                        GameManager.Instance.UseTeamMoney(hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().Cost);
+                        #endregion
+                        GameManager.Instance.UseTeamMoney(shopItem.Cost);
 
-                        GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.AddItem(hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().InventoryData);
+                        GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.AddItem(shopItem.ItemData);
 
-                        hit.transform.gameObject.GetComponent<PurchasableScriptableObject>().RequestDestroy();
+                        shopItem.RequestDestroy();
+
+                        Debug.Log($"구매 성공: {shopItem.ItemData.itemName} (-{shopItem.Cost} Gold)");
                     }
+                    else
+                    {
+                        Debug.Log($"돈이 부족합니다. (필요: {shopItem.Cost}, 보유: {GameManager.Instance.CurTeamMoney()})");
+                    }
+                    #region Legacy Code
                     //PurchasableScriptableObject purchasable = hit.transform.gameObject.GetComponent<PurchasableScriptableObject>();
                     //InventoryDataSO itemData = purchasable.InventoryData;
                     //if (GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.GetItemCount(itemData) > 0)
@@ -96,19 +118,17 @@ public class CoinLogic : MonoBehaviour
                     //{
                     //    Debug.Log("Not enough coins to purchase: " + itemData.name);
                     //}
+                    #endregion
                 }
-
-
-
             }
-
         }
+        #region Legacy Code
         //EventSystem.Screen
         //Debug.Log("Interaction F Clicked");
-        
+
         // Add coin to player's inventory or increase coin count
         // Example: playerInventory.AddCoins(1);
         //Destroy(gameObject); // Remove the coin from the scene
+        #endregion
     }
-
 }

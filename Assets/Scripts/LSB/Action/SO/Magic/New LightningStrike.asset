@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New LightningStrike
   m_EditorClassIdentifier: Assembly-CSharp::ChainLightningSO
   itemId: 
-  itemName: 
+  itemName: LightningStrike
   itemImage: {fileID: 2062015785, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
   itemPrefab: {fileID: 7017943351223773638, guid: 29db89a531eeb0a44b653f7ee1d5dcf7, type: 3}
   description: 
