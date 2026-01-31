@@ -114,8 +114,6 @@ public class ChattingManager : MonoBehaviourPunCallbacks
     IEnumerator ReceiveMessage()
     {
         yield return null;
-        if(chattingPanel==null)
-            yield break;
         chattingPanel.SetActive(true);
         yield return CoroutineManager.waitForSeconds(3f);
         yield return new WaitUntil(() => !onChat);
