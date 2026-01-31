@@ -75,13 +75,14 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     //외부용 피격 메서드
     public void ApplyRagdoll(Vector3 force, bool forceReset = false)
     {
-        if (isRagdollActive && !forceReset) return; // 이신빈
+        bool isDead = (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead); ;
+        if (isRagdollActive && !forceReset && !isDead) return; // 이신빈
         //이미 다운된 상태면 무시 (누워있어도 계속 날아가게 처리?? 일단 보류)
         //무콤 필요하면 주석해제 하고 테스트
 
         photonView.RPC(nameof(RpcActivateRagdoll), RpcTarget.All, force);
     }
-     
+
     //피격 RPC
     [PunRPC]
     private void RpcActivateRagdoll(Vector3 force)
@@ -109,7 +110,6 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         bzRagdoll.IsRagdolled = true;
 
         //위치값 가져와 물리 적용
-        //무게중심인 골반에 힘 가하기(추후 부위별 타격? 근데 문제가 많음)
         Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
         if (hips != null)
         {
@@ -150,7 +150,7 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
             {
                 getUpPos = hit.position;
             }
-            
+
             //일어나는 중
             isRecovering = true;
 
@@ -264,8 +264,8 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     {
         if (data.magicType == MagicType.Tornado) return true;
 
-        if (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead) return false;
-        if (isRagdollActive) return false;
+        bool isDead = (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead);
+        if (isRagdollActive && !isDead) return false;
 
         return true;
     }

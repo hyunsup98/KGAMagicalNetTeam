@@ -19,6 +19,7 @@ public class GuardManager : MonoBehaviourPunCallbacks
     [Header("경비 프리팹은 무조건 Resources에 넣어둬야함")]
     public List<GameObject> guardPrefabs;
     public float spawnInterval = 60f;
+    public int currentWave = 0;
 
     //타이머
     public float Timer { get; private set; } = 0f;
@@ -35,7 +36,7 @@ public class GuardManager : MonoBehaviourPunCallbacks
 
     //스폰
     private float nextSpawnTargetTime = 60f; //첫 스폰 1분 대기
-    private int currentWave = 0;
+
 
     //현재 경비 리스트, 가드매니저 파괴 시 전부 파괴
     private List<GameObject> activeGuards = new List<GameObject>();
@@ -169,6 +170,11 @@ public class GuardManager : MonoBehaviourPunCallbacks
                     string prefabName = guardPrefabs[randomIndex].name;
                     string selectedPrefabName = "NPCPrefab/" + prefabName;
                     GameObject guardObj = PhotonNetwork.InstantiateRoomObject(selectedPrefabName, point.position + offset, Quaternion.identity); //룸 오브젝트로 소환
+                    var agent = guardObj.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                    if (agent != null)
+                    {
+                        agent.avoidancePriority = UnityEngine.Random.Range(0, 100);
+                    }
                     activeGuards.Add(guardObj);
                 }
 
