@@ -17,7 +17,6 @@ public class TitleManager : MonoBehaviourPunCallbacks
         SoundManager.Instance.PlayBGM(titleAudio);
     }
 
-    //버튼 연결을 위해 우리가 만든 메서드임 OnConnectToServer아님
     public void ConnectToServer()
     {
         if (PhotonNetwork.IsConnected)

@@ -150,9 +150,12 @@ public class GameManager : PhotonSingleton<GameManager>
             PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.ONSTORE, !curOnStore);
         }
 
+
+
+        needMoneyCount = RoundManager.Instance.RequireMoenyCount;
         if (UIManager.Instance.moneyCount != null)
         {
-            UIManager.Instance.moneyCount.text = result + "";
+            UIManager.Instance.moneyCount.text = result + " / " + needMoneyCount;
             Debug.Log("팀 재화 표시");
         }
         else
@@ -160,8 +163,6 @@ public class GameManager : PhotonSingleton<GameManager>
             Debug.Log("팀 재화 표시 실패");
 
         }
-
-        needMoneyCount = RoundManager.Instance.RequireMoenyCount;
     }
 
     public void PlusMoneyCount()
@@ -176,7 +177,7 @@ public class GameManager : PhotonSingleton<GameManager>
         {
             if (UIManager.Instance.moneyCount != null)
             {
-                UIManager.Instance.moneyCount.text = CurTeamMoney() + "";
+                UIManager.Instance.moneyCount.text = CurTeamMoney() + " / " + needMoneyCount;
             }
         }
 

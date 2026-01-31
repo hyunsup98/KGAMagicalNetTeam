@@ -314,8 +314,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             return;
         if (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
             return;
-
-        PhotonNetwork.LeaveRoom();
+        GameManager.Instance.ExitGame();
     }
 
     //public override void OnLeftRoom()

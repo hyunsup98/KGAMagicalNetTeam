@@ -2,7 +2,7 @@ using BzKovSoft.RagdollTemplate.Scripts.Charachter;
 using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using System.Collections;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
+//using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AI;
 

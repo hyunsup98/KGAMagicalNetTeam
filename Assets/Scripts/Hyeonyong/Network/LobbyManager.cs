@@ -22,10 +22,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     [SerializeField] AudioClip LobbyAudio;
     [SerializeField] int maxPlayers = 4;
+
+    bool toRefresh=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         SoundManager.Instance.PlayBGM(LobbyAudio);
+        Refresh();
         Debug.Log("로비 씬 시작");
         if (FirebaseAuthManager.Instance != null)
         {
@@ -43,15 +46,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
         }
 
-        
+
+
         //    return;
         //if (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
         //    return;
 
-        if (PhotonNetwork.IsConnectedAndReady && !PhotonNetwork.InLobby)
-        {
-                PhotonNetwork.JoinLobby();
-        }
+        //if (PhotonNetwork.IsConnectedAndReady && !PhotonNetwork.InLobby)
+        //{
+        //    PhotonNetwork.JoinLobby();
+        //}
+        //else if (PhotonNetwork.InLobby)
+        //{
+        //    Refresh();
+        //}
         //260113 최정욱 방 나가고 로비로 돌아올때 마스터서버로 전환 기다리기
 
 
@@ -60,7 +68,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //    //yield break;
         //if (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
         //    return;
-            //yield break;
+        //yield break;
         //yield return new WaitUntil(() => PhotonNetwork.InLobby);
         //yield return null;
 
@@ -69,7 +77,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     //260113 최정욱 방 나가고 로비로 돌아올때 마스터서버로 전환 기다리기
     public override void OnConnectedToMaster()
     {
-        if (!PhotonNetwork.InLobby)
+        if (PhotonNetwork.InLobby)
             return;
         PhotonNetwork.JoinLobby();
         Debug.Log("마스터와 커넥트");
@@ -149,27 +157,29 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void Refresh()//룸 새로고침 : 로비 나갔다 들어오기
     {
-        StartCoroutine(RefreshRoomList());
+        toRefresh = true;
+        if (PhotonNetwork.InLobby)
+        {
+            PhotonNetwork.LeaveLobby();
+        }
+        else if(PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.JoinLobby();
+            toRefresh = false;
+        }
     }
 
-    private IEnumerator RefreshRoomList()
+    public override void OnLeftLobby()
     {
-        // 1. 로비를 나갑니다.
-        PhotonNetwork.LeaveLobby();
-
-        // 2. 상태가 완전히 '마스터 서버(로비 밖)'로 바뀔 때까지 대기
-        while (PhotonNetwork.InLobby)
+        if (toRefresh)
         {
-            yield return null;
+            PhotonNetwork.JoinLobby();
+            toRefresh = false;
         }
-
-        // 3. 이제 안전하게 다시 로비 진입
-        PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("방 입장 및 룸 씬으로 전환 요청");
         SceneManager.LoadScene(roomSceneName);
     }
 
