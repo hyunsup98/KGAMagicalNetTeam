@@ -263,11 +263,13 @@ public class UIManager : MonoBehaviour
         if (mouseSensivitySlider != null)
         {
             mouseSensivitySlider.onValueChanged.AddListener((value) => 
-            { PlayerPrefsDataManager.MouseSensitivity = value;
+            { 
+                PlayerPrefsDataManager.MouseSensitivity = value;
 
                 if (thirdPersonCamera != null)
                 {
-                    thirdPersonCamera.Sensitivity = value;
+                    //thirdPersonCamera.Sensitivity = value;
+                    thirdPersonCamera.SetSensivity(value);
                 }
             
             });
@@ -283,6 +285,7 @@ public class UIManager : MonoBehaviour
                 if (thirdPersonCamera != null)
                 {
                     thirdPersonCamera.InvertX = isOn;
+                    //thirdPersonCamera.SetInvertX(isOn);
                 }
             });
             checkMouseXInvert.isOn = PlayerPrefsDataManager.MouseXInvert;
@@ -295,6 +298,7 @@ public class UIManager : MonoBehaviour
                 if (thirdPersonCamera != null)
                 {
                     thirdPersonCamera.InvertY = isOn;
+                    //thirdPersonCamera.SetInvertY(isOn);
                 }
             });
             checkMouseYInvert.isOn = PlayerPrefsDataManager.MouseYInvert;

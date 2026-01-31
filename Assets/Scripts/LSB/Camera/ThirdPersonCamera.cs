@@ -33,9 +33,10 @@ public class ThirdPersonCamera : MonoBehaviour
         get { return invertX; }
         set
         {
+            invertX = value;
             if (xAxis != null)
             {
-                xAxis.Input.Gain = !InvertX ? sensitivity : -sensitivity;
+                xAxis.Input.Gain = !invertX ? sensitivity : -sensitivity;
             }
         }
     }
@@ -46,6 +47,7 @@ public class ThirdPersonCamera : MonoBehaviour
         get { return invertY; }
         set
         {
+            invertY = value;
             if (yAxis != null)
             {
                 yAxis.Input.Gain = !invertY ? -sensitivity : sensitivity;
@@ -154,4 +156,22 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         return target;
     }
+
+    public void SetSensivity(float value)
+    {
+        sensitivity = value;
+        xAxis.Input.Gain = !InvertX ? sensitivity : -sensitivity;
+        yAxis.Input.Gain = !invertY ? -sensitivity : sensitivity;
+    }
+
+    //public void SetInvertX(bool invert)
+    //{
+    //    InvertX = invert;
+    //    xAxis.Input.Gain = !InvertX ? sensitivity : -sensitivity;
+    //}
+    //public void SetInvertY(bool invert)
+    //{
+    //    InvertY = invert;
+    //    yAxis.Input.Gain = !invertY ? -sensitivity : sensitivity;
+    //}
 }
