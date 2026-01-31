@@ -30,8 +30,8 @@ public class GuardChaseState : AIStateBase
         base.Enter();
         if (guard.Agent != null && guard.Agent.isOnNavMesh)
         {
-            guard.Agent.updatePosition = true;  
-            guard.Agent.updateRotation = true; 
+            guard.Agent.updatePosition = true;
+            guard.Agent.updateRotation = false;
             guard.Agent.isStopped = false;
             guard.Agent.ResetPath();
             guard.Agent.speed = guard.runSpeed;
@@ -69,6 +69,15 @@ public class GuardChaseState : AIStateBase
         Vector3 toTarget = guard.targetPlayer.position - guard.transform.position;
         float sqrDist = toTarget.sqrMagnitude;
 
+        Vector3 lookDir = toTarget.normalized;
+        lookDir.y = 0;
+
+        if (lookDir != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(lookDir);
+            guard.transform.rotation = Quaternion.Slerp(guard.transform.rotation, targetRot, Time.deltaTime * 10f);
+        }
+
         //공격 사거리 안으로 들어왔는가?
         if (sqrDist <= sqrAttackRange)
         {
@@ -79,18 +88,13 @@ public class GuardChaseState : AIStateBase
 
         //매 프레임 SetDestination x
         pathTimer += Time.deltaTime;
-        if (pathTimer > 0.25f)
+        if (pathTimer > 0.2f)
         {
             pathTimer = 0f;
 
-            //타겟이 0.25m 이상 움직였을 때만 재계산
-            if (Vector3.SqrMagnitude(guard.targetPlayer.position - lastTargetPos) > 0.25f)
+            if (guard.Agent.isOnNavMesh)
             {
-                if (guard.Agent.isOnNavMesh)
-                {
-                    guard.Agent.SetDestination(guard.targetPlayer.position);
-                    lastTargetPos = guard.targetPlayer.position;
-                }
+                guard.Agent.SetDestination(guard.targetPlayer.position);
             }
         }
 

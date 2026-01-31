@@ -47,10 +47,17 @@ public class GuardManager : MonoBehaviourPunCallbacks
         public float time;
     }
 
+    public struct EnemyTargetInfo
+    {
+        public Vector3 position;
+        public float lastSeenTime; //언제 봤는지 시간 기록
+    }
+
 
     private List<MagicNoise> magicNoises = new List<MagicNoise>();
     //타겟 공유 딕셔너리. 중복 방지용 key 액터넘버, val 위치벡터값 
-    private Dictionary<int, Vector3> sharedTargets = new Dictionary<int, Vector3>();
+    private Dictionary<int, EnemyTargetInfo> sharedTargets = new Dictionary<int, EnemyTargetInfo>();
+    private List<int> tempKeysToRemove = new List<int>();
 
     private void Awake()
     {
@@ -146,6 +153,25 @@ public class GuardManager : MonoBehaviourPunCallbacks
                         magicNoises.RemoveAt(i);
                     }
                 }
+                if (sharedTargets.Count > 0)
+                {
+                    float visualExpireTime = Time.time - 20f;
+                    tempKeysToRemove.Clear();
+
+                    foreach (var kvp in sharedTargets)
+                    {
+                        if (kvp.Value.lastSeenTime < visualExpireTime)
+                        {
+                            tempKeysToRemove.Add(kvp.Key);
+                        }
+                    }
+
+                    //찾은 키 삭제
+                    for (int i = 0; i < tempKeysToRemove.Count; i++)
+                    {
+                        sharedTargets.Remove(tempKeysToRemove[i]);
+                    }
+                }
             }
         }
     }
@@ -170,11 +196,6 @@ public class GuardManager : MonoBehaviourPunCallbacks
                     string prefabName = guardPrefabs[randomIndex].name;
                     string selectedPrefabName = "NPCPrefab/" + prefabName;
                     GameObject guardObj = PhotonNetwork.InstantiateRoomObject(selectedPrefabName, point.position + offset, Quaternion.identity); //룸 오브젝트로 소환
-                    var agent = guardObj.GetComponent<UnityEngine.AI.NavMeshAgent>();
-                    if (agent != null)
-                    {
-                        agent.avoidancePriority = UnityEngine.Random.Range(0, 100);
-                    }
                     activeGuards.Add(guardObj);
                 }
 
@@ -195,13 +216,17 @@ public class GuardManager : MonoBehaviourPunCallbacks
             float minDistSqr = float.MaxValue;
             bool found = false;
             //위치 확인
+
+            float validTimeThreshold = Time.time - 15.0f;
+
             foreach (var kvp in sharedTargets)
             {
-                float d = (kvp.Value - guardPos).sqrMagnitude;//제곱
+                if (kvp.Value.lastSeenTime < validTimeThreshold) continue;
+                float d = (kvp.Value.position - guardPos).sqrMagnitude;//제곱
                 if (d < minDistSqr)//더가까움?
                 {
                     minDistSqr = d;
-                    bestPos = kvp.Value;
+                    bestPos = kvp.Value.position;
                     found = true;//찾았다
                 }
             }
@@ -239,10 +264,11 @@ public class GuardManager : MonoBehaviourPunCallbacks
     //딕셔너리 갱신
     private void UpdateEnemyInfo(int actorNumber, Vector3 pos)
     {
+        EnemyTargetInfo info = new EnemyTargetInfo { position = pos, lastSeenTime = Time.time };
         if (sharedTargets.ContainsKey(actorNumber)) //딕셔너리에 있으면
-            sharedTargets[actorNumber] = pos; //위치만 수정
+            sharedTargets[actorNumber] = info; //위치만 수정
         else
-            sharedTargets.Add(actorNumber, pos); //업승면 추가
+            sharedTargets.Add(actorNumber, info); //업승면 추가
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
