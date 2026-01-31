@@ -10350,6 +10350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_3_Brown Sensei Scaled up 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3444269921671779059, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: e8c3c0ad6ad875346984481f51f21ab0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

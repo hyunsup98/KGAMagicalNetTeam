@@ -1,14 +1,46 @@
+using NUnit.Framework.Interfaces;
+using Photon.Pun;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Purchasable Item", menuName = "Game/PurchsableSO")]
-public class PurchasableItem:ItemDataSO
+
+[RequireComponent(typeof(PhotonView))]
+[RequireComponent(typeof(Collider))]
+public class PurchasableItem : MonoBehaviourPun
 {
-    public override ActionBase CreateInstance()
+    [Header("Shop Settings")]
+    [SerializeField] InventoryDataSO _itemData;
+    [SerializeField] int _cost;
+
+
+    public InventoryDataSO ItemData => _itemData;
+
+    public int Cost => _cost;
+
+    public void RequestDestroy()
     {
-        return new ItemCoin(this);
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+        else
+        {
+            //PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("RPC_Destroy", RpcTarget.MasterClient);
+        }
+
+    }
+    [PunRPC]
+    public void RPC_Destroy()
+    {
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
-
-
-
-
