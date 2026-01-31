@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SHSTest2 : MonoBehaviour, IInteractable
+public class SHSTest2 : MonoBehaviour, IInteract
 {
     public bool IsInteracted { get; private set; }
 

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GuardAssassinateState : AIStateBase, IInteractable
+public class GuardAssassinateState : AIStateBase, IInteract
 {
-    private IInteractable target;       // 상호작용을 할 상대 타겟
+    private IInteract target;       // 상호작용을 할 상대 타겟
 
     private readonly int? animHashNum;
 
@@ -11,7 +11,7 @@ public class GuardAssassinateState : AIStateBase, IInteractable
     public Transform ActorTrans => ai.transform;
     [field: SerializeField] public InteractionDataSO interactionData { get; set; }
 
-    public GuardAssassinateState(BaseAI ai, StateMachine stateMachine, BaseAI.AIStateID stateID, IInteractable target, string animName)
+    public GuardAssassinateState(BaseAI ai, StateMachine stateMachine, BaseAI.AIStateID stateID, IInteract target, string animName)
         : base(ai, stateMachine, stateID)
     {
         this.target = target;

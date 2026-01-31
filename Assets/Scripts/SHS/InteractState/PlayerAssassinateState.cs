@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class PlayerAssassinateState : PlayerInteractState
 {
-    public PlayerAssassinateState(PlayableCharacter player, StateMachine stateMachine, InteractionDataSO interactionData = null) 
-        : base(player, stateMachine, interactionData)
+    public PlayerAssassinateState(PlayableCharacter player, StateMachine stateMachine, HashSet<IInteract> receivers, InteractionDataSO interactionData = null) 
+        : base(player, stateMachine, receivers, interactionData)
+    {
+
+    }
+
+    public PlayerAssassinateState(PlayableCharacter player, StateMachine stateMachine, IInteract receiver, InteractionDataSO interactionData = null)
+        : base(player, stateMachine, receiver, interactionData)
     {
 
     }
