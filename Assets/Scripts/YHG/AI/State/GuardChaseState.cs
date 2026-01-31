@@ -31,7 +31,7 @@ public class GuardChaseState : AIStateBase
         if (guard.Agent != null && guard.Agent.isOnNavMesh)
         {
             guard.Agent.updatePosition = true;
-            guard.Agent.updateRotation = false;
+            guard.Agent.updateRotation = true;
             guard.Agent.isStopped = false;
             guard.Agent.ResetPath();
             guard.Agent.speed = guard.runSpeed;
@@ -68,15 +68,6 @@ public class GuardChaseState : AIStateBase
         //사거리체크
         Vector3 toTarget = guard.targetPlayer.position - guard.transform.position;
         float sqrDist = toTarget.sqrMagnitude;
-
-        Vector3 lookDir = toTarget.normalized;
-        lookDir.y = 0;
-
-        if (lookDir != Vector3.zero)
-        {
-            Quaternion targetRot = Quaternion.LookRotation(lookDir);
-            guard.transform.rotation = Quaternion.Slerp(guard.transform.rotation, targetRot, Time.deltaTime * 10f);
-        }
 
         //공격 사거리 안으로 들어왔는가?
         if (sqrDist <= sqrAttackRange)
