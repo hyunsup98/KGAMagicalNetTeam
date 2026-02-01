@@ -12,6 +12,8 @@ public class PlayerInteractState : PlayerStateBase, IInteract
 
     public Transform ActorTrans => player.currentTransform;
 
+    public Transform Interactable => player.transform;
+
     public PlayerInteractState(PlayableCharacter player, StateMachine stateMachine, HashSet<IInteract> receivers, InteractionDataSO interactionData = null) 
         : base(player, stateMachine)
     {
@@ -47,10 +49,9 @@ public class PlayerInteractState : PlayerStateBase, IInteract
     {
         base.Enter();
 
-        if(interactionData != null)
+        if(interactionData != null && player.InteractionManager != null)
         {
             player.InputHandler.CanInteractMotion = false;
-            InteractionManager.Instance.RequestInteraction(interactionData, this, receivers.ToArray());
         }
     }
 
@@ -74,6 +75,8 @@ public class PlayerInteractState : PlayerStateBase, IInteract
     {
         // 인풋시스템 x
         player.InputHandler.OffPlayerInput();
+        player.Rigidbody.isKinematic = true;
+        player.SetInvincible(true);
     }
 
     public virtual void OnStopped()
@@ -81,5 +84,7 @@ public class PlayerInteractState : PlayerStateBase, IInteract
         // 인풋시스템 o
         player.InputHandler.OnPlayerInput();
         player.StateMachine.ChangeState(player.MoveState);
+        player.Rigidbody.isKinematic = false;
+        player.SetInvincible(false);
     }
 }

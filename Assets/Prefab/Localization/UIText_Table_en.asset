@@ -34,6 +34,54 @@ MonoBehaviour:
     m_Localized: Options
     m_Metadata:
       m_Items: []
+  - m_Id: 6112689998082048
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112763050274816
+    m_Localized: Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112788341927936
+    m_Localized: Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112804926205952
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112843480248320
+    m_Localized: Roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112868629295104
+    m_Localized: Left/Right Hand Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112929836773376
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112948379791360
+    m_Localized: Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113002981240832
+    m_Localized: Chatting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113035801669632
+    m_Localized: Transformation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113061047185408
+    m_Localized: Left/Right Hand Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113095671164928
+    m_Localized: Room Setting/ViewPoint Change
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

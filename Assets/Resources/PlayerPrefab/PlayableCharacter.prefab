@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 6974702080980810718}
   - component: {fileID: 6264066921911791175}
   - component: {fileID: 1906035955379593662}
+  - component: {fileID: 4323892277564477940}
   - component: {fileID: 38377460294247438}
   - component: {fileID: 7752848447118575829}
   - component: {fileID: 584731637786702885}
@@ -120,6 +121,7 @@ GameObject:
   - component: {fileID: -6708908734006990876}
   - component: {fileID: 6959001058618340752}
   - component: {fileID: 3256137796433457060}
+  - component: {fileID: 5097552514043643504}
   m_Layer: 6
   m_Name: PlayableCharacter
   m_TagString: Player
@@ -172,6 +174,7 @@ MonoBehaviour:
   wizardModel: {fileID: 8722707484499129528}
   playerIcon: {fileID: 4620196561771727251}
   teamIcon: {fileID: 2133397425804827743}
+  interactionManager: {fileID: 4323892277564477940}
   canInteractLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -279,6 +282,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTransformationController
   transformEffect: {fileID: 0}
   transformDuration: 3
+--- !u!114 &4323892277564477940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a21dc9a48f5a442b53884eb285af0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionManager
+  pd: {fileID: 5097552514043643504}
 --- !u!54 &38377460294247438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -646,6 +662,23 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!320 &5097552514043643504
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &317560795834362853
 PrefabInstance:
   m_ObjectHideFlags: 0

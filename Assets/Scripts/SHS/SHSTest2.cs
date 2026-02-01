@@ -8,6 +8,8 @@ public class SHSTest2 : MonoBehaviour, IInteract
 
     [field: SerializeField] public InteractionDataSO interactionData { get; set; }
 
+    public Transform Interactable => throw new System.NotImplementedException();
+
     public void OnInteraction()
     {
 
