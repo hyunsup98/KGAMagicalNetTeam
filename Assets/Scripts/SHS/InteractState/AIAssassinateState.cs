@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class AIAssassinateState : AIStateBase, IInteract
@@ -6,6 +7,8 @@ public class AIAssassinateState : AIStateBase, IInteract
 
     public Transform ActorTrans => ai.transform;
     [field: SerializeField] public InteractionDataSO interactionData { get; set; }
+
+    public Transform Interactable => ai.transform;
 
     public AIAssassinateState(BaseAI ai, StateMachine stateMachine, BaseAI.AIStateID stateID)
         : base(ai, stateMachine, stateID)

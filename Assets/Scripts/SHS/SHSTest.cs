@@ -12,6 +12,8 @@ public class SHSTest : MonoBehaviour, IInteract
 
     [field: SerializeField] public InteractionDataSO interactionData { get; set; }
 
+    public Transform Interactable => throw new NotImplementedException();
+
     [SerializeField] private InteractionDataSO test;
     [SerializeField] private Transform p1;
     [SerializeField] private Transform p2;

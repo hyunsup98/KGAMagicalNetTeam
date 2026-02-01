@@ -8,7 +8,7 @@ using UnityEngine.Timeline;
 /// <summary>
 /// 상호작용을 관리할 중간 매개체 매니저
 /// </summary>
-public class InteractionManager : Singleton<InteractionManager>
+public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private PlayableDirector pd;
 
@@ -19,14 +19,13 @@ public class InteractionManager : Singleton<InteractionManager>
 
     private Dictionary<InteractionType, BaseInteractSystem> interactSystemDic = new Dictionary<InteractionType, BaseInteractSystem>();
 
-    protected override void Awake()
+    public void RequestInteraction(bool isMine, IInteract executer, params IInteract[] receivers)
     {
-        base.Awake();
-    }
+        if (executer == null || receivers == null) return;
 
-    public void RequestInteraction(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
-    {
-        if (data == null || executer == null || receivers == null) return;
+        Debug.Log("상호작용 메서드 진입");
+
+        InteractionDataSO data = receivers[0].interactionData;
 
         if (!interactSystemDic.ContainsKey(data.type))
         {
@@ -51,13 +50,13 @@ public class InteractionManager : Singleton<InteractionManager>
         this.executer = executer;
         this.receivers = receivers.ToList();
 
-        TimelineSetting(data, executer, receivers);
+        TimelineSetting(data, isMine, executer, receivers);
 
         Play();
     }
 
     // 타임라인 포지션 등 세팅
-    private void TimelineSetting(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
+    private void TimelineSetting(InteractionDataSO data, bool isMine, IInteract executer, params IInteract[] receivers)
     {
         if (data == null) return;
         if (ProjectManager.Instance == null || ProjectManager.Instance.CinemachineControl == null) return;
@@ -65,7 +64,7 @@ public class InteractionManager : Singleton<InteractionManager>
         pd.playableAsset = data.timelineAsset;
 
         var tracks = data.timelineAsset.GetOutputTracks().ToArray();
-        SetTrackValue(data, tracks, executer, receivers);
+        SetTrackValue(data, isMine, tracks, executer, receivers);
         SetTransform(data, executer, receivers);
     }
 
@@ -87,9 +86,19 @@ public class InteractionManager : Singleton<InteractionManager>
     }
 
     // 트랙에 맞게 매칭
-    private void SetTrackValue(InteractionDataSO data, TrackAsset[] tracks, IInteract executer, params IInteract[] receivers)
+    private void SetTrackValue(InteractionDataSO data, bool isMine, TrackAsset[] tracks, IInteract executer, params IInteract[] receivers)
     {
-        pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
+        if (isMine)
+        {
+            pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
+            Debug.Log("내 플레이어");
+        }
+        else
+        {
+            tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))].muted = true;
+            Debug.Log("타 플레이어");
+        }
+
         pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Executer"))], executer.ActorTrans.gameObject);
 
         for (int i = 0; i < data.offset_Receiver.Count; i++)

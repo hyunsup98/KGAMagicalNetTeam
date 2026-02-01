@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerAssassinateState : PlayerInteractState
@@ -18,6 +19,12 @@ public class PlayerAssassinateState : PlayerInteractState
     public override void Enter()
     {
         base.Enter();
+
+        if (interactionData != null && player.InteractionManager != null)
+        {
+            Debug.Log("상태 진입");
+            player.OnTimelinePlay(InteractionType.Assassinate, this, receivers.ToArray());
+        }
     }
 
     public override void Exit()

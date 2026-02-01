@@ -9,7 +9,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
 {
     // 구독할 이벤트 정의
     public event Action<float> OnHpChanged; // 체력 변경하면 전달용
-    public event Action OnDie;              // 사망하면 호출용
+    public event Action OnDie;       // 사망하면 호출용
 
     // 모델
     private PlayerModel _model;
@@ -36,6 +36,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     [SerializeField] private MapIcon teamIcon;
 
     [Header("Interact Settings")]
+    [SerializeField] private InteractionManager interactionManager;
     [SerializeField] private LayerMask canInteractLayer;    // 상호작용이 가능한 레이어
     [SerializeField] private float checkDistance = 1f;      // 260122 신현섭: 상호작용 체크 거리
 
@@ -57,6 +58,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     public bool CanDodge => Time.time >= LastDodgeTime + DodgeCooldown;
     public GameObject CivilianModel => civilianModel;
     public GameObject WizardModel => wizardModel;
+    public InteractionManager InteractionManager => interactionManager;
     #endregion
 
     #region 참조
@@ -83,7 +85,9 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     [field: SerializeField] public InteractionDataSO assassinatedData { get; private set; }  // 암살 연출 데이터 (당하는 입장)
 
     [field: SerializeField] public Transform currentTransform { get; private set; }
+    public bool IsInvincible { get; private set; } = false;
 
+    public void SetInvincible(bool isInvincible) => IsInvincible = isInvincible;
 
 
     #endregion
@@ -328,10 +332,61 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
         }
     }
 
+    public void OnTimelinePlay(InteractionType type, IInteract executer, params IInteract[] receivers)
+    {
+        if (photonView.IsMine == false) return;
+
+        if (!executer.Interactable.TryGetComponent<PhotonView>(out var executerID)) return;
+
+        int[] receiversID = new int[receivers.Length];
+
+        for(int i = 0; i <  receiversID.Length; i++)
+        {
+            if (!receivers[i].Interactable.TryGetComponent<PhotonView>(out var receiverID)) return;
+
+            receiversID[i] = receiverID.ViewID;
+        }
+
+        Debug.Log("RPC 전송 준비 완료");
+
+        photonView.RPC(nameof(RPC_TimelinePlay), RpcTarget.All, (int)type, executerID.ViewID, receiversID);
+    }
+
+    [PunRPC]
+    public void RPC_TimelinePlay(int type, int executerID, params int[] receiversID)
+    {
+        IInteract[] receivers = new IInteract[receiversID.Length];
+        IInteract executer = null;
+
+        for(int i = 0; i < receiversID.Length; i++)
+        {
+            IInteractable interactable = PhotonView.Find(receiversID[i]).GetComponent<IInteractable>();
+            receivers[i] = interactable.GetInteractInfo((InteractionType)type);
+        }
+
+        switch ((InteractionType)type)
+        {
+            case InteractionType.Assassinate:
+                executer = new PlayerAssassinateState(this, StateMachine, receivers[0], receivers[0].interactionData);
+                break;
+        }
+
+        Debug.Log(executer.ActorTrans.name);
+        foreach(var receiver in receivers)
+        {
+            Debug.Log(receiver.ActorTrans.name);
+        }
+        Debug.Log("RPC 수신 완료");
+
+        InteractionManager.RequestInteraction(photonView.IsMine, executer, receivers);
+    }
+
     public void OnAttacked(float damage)
     {
         if (photonView.IsMine == true && !PhotonNetwork.LocalPlayer.GetProps<bool>(NetworkProperties.PLAYER_ALIVE))
             return;
+        if (IsInvincible) return;   // 무적 판정일 경우 무시
+
         photonView.RPC(nameof(RPC_TakeDamage), RpcTarget.All, damage);
     }
 
