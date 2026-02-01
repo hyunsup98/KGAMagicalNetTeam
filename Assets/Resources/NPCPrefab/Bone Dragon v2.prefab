@@ -71,8 +71,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8981824214143200373}
+  - component: {fileID: 2227654253648727863}
+  - component: {fileID: 3331761923180002131}
   m_Layer: 0
-  m_Name: SkeleRIG_56
+  m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,13 +88,46 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213485909641619574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0067255306, y: 0.017117383, z: 0.074234374, w: 0.9970712}
+  m_LocalRotation: {x: 0.0067151478, y: -0.01832758, z: -0.04135781, w: 0.9989537}
   m_LocalPosition: {x: 0.13688985, y: 3.9985976, z: 0.848092}
   m_LocalScale: {x: 1.0000011, y: 1.0000014, z: 1.0000013}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1400793221264260812}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.682, y: -2.13, z: -4.754}
+--- !u!114 &2227654253648727863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213485909641619574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129a0b6dfb3b554d9f1046d264da0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
+--- !u!65 &3331761923180002131
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213485909641619574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.1891527, z: 1.2611576}
+  m_Center: {x: -0.000000008395614, y: -0.6268257, z: 0.1305797}
 --- !u!1 &289328361322250636
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +795,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73482490872783653}
+  - component: {fileID: 6649689485962275474}
+  - component: {fileID: 6180144497630559013}
   m_Layer: 0
-  m_Name: SkeleRIG_92
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,6 +819,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1400793221264260812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6649689485962275474
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749877546982891057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5626662
+  m_Center: {x: 0.062668666, y: -0.0000000068262715, z: 0.000000003773957}
+--- !u!114 &6180144497630559013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749877546982891057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129a0b6dfb3b554d9f1046d264da0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
 --- !u!1 &1962271147098144419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,8 +3096,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684197458499215493}
+  - component: {fileID: 7694776464359173873}
+  - component: {fileID: 3456171507815836705}
   m_Layer: 0
-  m_Name: Point005
+  m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3049,6 +3121,39 @@ Transform:
   - {fileID: 6634195112025243713}
   m_Father: {fileID: 1400793221264260812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7694776464359173873
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342059197243284177}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.87821126, y: 0.5292228, z: 0.6492689}
+  m_Center: {x: -0.060894433, y: -0.09497581, z: 0.17536801}
+--- !u!114 &3456171507815836705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342059197243284177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129a0b6dfb3b554d9f1046d264da0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
 --- !u!1 &5384950048002881196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,6 +3602,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2873954870645264036}
   - component: {fileID: 1897421205717162974}
+  - component: {fileID: 6568215365817249958}
+  - component: {fileID: 6647382703162966248}
+  - component: {fileID: 592336728108547900}
+  - component: {fileID: 8625774102379717702}
+  - component: {fileID: 1031574415878199262}
+  - component: {fileID: 7572729213379206440}
+  - component: {fileID: 9111578033253271557}
   m_Layer: 0
   m_Name: Bone Dragon v2
   m_TagString: Untagged
@@ -3531,7 +3643,7 @@ Animator:
   m_GameObject: {fileID: 6161566671822877736}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5c1a7f08c15994365a2d0b0afba374a3, type: 3}
-  m_Controller: {fileID: 9100000, guid: ca3070e07da184be8a1fd06dadbd398e, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9ac7e22f6f1e714ca2034e93faf4c3d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3543,6 +3655,165 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &6568215365817249958
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7905235, y: 3.1937582, z: 7.438265}
+  m_Center: {x: -0.22034264, y: 1.0968791, z: -1.1927614}
+--- !u!195 &6647382703162966248
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 20
+  avoidancePriority: 50
+  m_AngularSpeed: 180
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.2
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &592336728108547900
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  serializedVersion: 5
+  m_Mass: 1000
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8625774102379717702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonView
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1031574415878199262}
+  - {fileID: 7572729213379206440}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1031574415878199262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonTransformView
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7572729213379206440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonAnimatorView
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &9111578033253271557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161566671822877736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3bf66248d907f748ba740509e1df3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragonAI
+  maxHP: 4000
+  currentHP: 0
+  isPhaseTwo: 0
+  runSpeed: 6
+  rotSpeed: 5
+  anim: {fileID: 1897421205717162974}
+  agent: {fileID: 6647382703162966248}
+  jawWeapon: {fileID: 6180144497630559013}
+  leftClaw: {fileID: 7086039818130151300}
+  rightClaw: {fileID: 3456171507815836705}
+  tailWeapon: {fileID: 2227654253648727863}
+  bodyCrashRadius: 4.5
+  flightDistance: 40
+  targetPlayer: {fileID: 0}
+  angleFrontNarrow: 30
+  angleFrontWide: 90
+  angleBackTail: 90
+  distLongRange: 7
+  distCombatExit: 12
 --- !u!1 &6208610726358889748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3895,8 +4166,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 820120409906901255}
+  - component: {fileID: 8897933682733683792}
+  - component: {fileID: 7086039818130151300}
   m_Layer: 0
-  m_Name: Point002
+  m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3918,6 +4191,39 @@ Transform:
   - {fileID: 9124737277332801199}
   m_Father: {fileID: 1400793221264260812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8897933682733683792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632987399375150009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.729871, y: 0.42293477, z: 0.74799734}
+  m_Center: {x: 0.13, y: -0.13, z: 0.16}
+--- !u!114 &7086039818130151300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632987399375150009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129a0b6dfb3b554d9f1046d264da0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
 --- !u!1 &6663662171367354445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,13 +5279,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8288911795976981025}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.004260321, y: 0.014194015, z: 0.060045477, w: 0.9980857}
+  m_LocalRotation: {x: 0.0047598267, y: -0.029654326, z: -0.045502536, w: 0.9985127}
   m_LocalPosition: {x: 0.015455301, y: 2.8231168, z: 1.0561607}
   m_LocalScale: {x: 1.0000007, y: 1.0000002, z: 1.0000011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1400793221264260812}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.39, y: -3.42, z: -5.23}
 --- !u!1 &8490971860145803513
 GameObject:
   m_ObjectHideFlags: 0
