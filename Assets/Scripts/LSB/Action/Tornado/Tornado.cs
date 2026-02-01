@@ -14,6 +14,10 @@ public class Tornado : MonoBehaviourPun
     private int shooterID;         // 스킬 시전자의 ActorNumber (자해 방지용)
     private Vector3 moveDirection; // 토네이도 진행 방향
 
+    List<Rigidbody> toRelease = new List<Rigidbody>(128);    // 놓아줄 목록
+    List<Rigidbody> toSwapAdd = new List<Rigidbody>(128);    // 교체 후 추가할 목록
+    List<Rigidbody> toSwapRemove = new List<Rigidbody>(128); // 교체 후 제거할 목록
+
     /// <summary>
     /// 토네이도 생성 시 호출되는 초기화 RPC 함수
     /// 발사 정보를 설정하고 수명을 관리하는 코루틴을 시작
@@ -193,9 +197,9 @@ public class Tornado : MonoBehaviourPun
     /// </summary>
     private void ControlSatellites()
     {
-        List<Rigidbody> toRelease = new List<Rigidbody>();    // 놓아줄 목록
-        List<Rigidbody> toSwapAdd = new List<Rigidbody>();    // 교체 후 추가할 목록
-        List<Rigidbody> toSwapRemove = new List<Rigidbody>(); // 교체 후 제거할 목록
+        toRelease.Clear();
+        toSwapAdd.Clear();
+        toSwapRemove.Clear();
 
         foreach (var rb in activeTargets)
         {

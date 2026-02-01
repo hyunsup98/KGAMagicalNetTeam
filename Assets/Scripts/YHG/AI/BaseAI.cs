@@ -15,7 +15,7 @@ using System.Runtime.CompilerServices;
 마스터클라이언트 한 명만 수행, 나머지 클라이언트는 그 위치값만 받아 동기화
 */
 
-public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamageable, IDebuffable
+public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamageable, IDebuffable, IInteractable
 {
     [Header("Base Settings")]
     public float moveSpeed = 3.5f;
@@ -35,7 +35,7 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
 
     //네트워크 동기화용 상태 인덱스, 애니에서도 쓸 듯?
     //전송은 정수로만
-    public enum AIStateID { Patrol, Alert, Action, Dead, Chase, Attack, Debuff }
+    public enum AIStateID { Patrol, Alert, Action, Dead, Chase, Attack, Debuff, Assassinate }
     public AIStateID currentNetworkState;
 
     //랙돌용 컴포넌트 캐싱 01.16 이관
@@ -347,5 +347,11 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     {
         throw new System.NotImplementedException();
     }
+
+    public virtual IInteract GetInteractInfo(InteractionType type)
+    {
+        return null;
+    }
+
     #endregion
 }

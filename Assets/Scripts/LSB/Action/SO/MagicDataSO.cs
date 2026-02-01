@@ -4,7 +4,8 @@ public enum MagicType
     None,
     Fireball,
     Lightning,
-    Tornado
+    Tornado,
+    BlackHole
 }
 public abstract class MagicDataSO : ActionItemDataSO
 {

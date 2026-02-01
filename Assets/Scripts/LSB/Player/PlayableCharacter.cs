@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayableCharacter : MonoBehaviourPun
+public class PlayableCharacter : MonoBehaviourPun, IInteractable
 {
     // 구독할 이벤트 정의
     public event Action<float> OnHpChanged; // 체력 변경하면 전달용
@@ -80,7 +80,8 @@ public class PlayableCharacter : MonoBehaviourPun
     public PlayerInteractState InteractState { get; private set; }    // 260122 신현섭: 상호작용 상태로 전환
 
 
-    [field: SerializeField] public InteractionDataSO interactionData { get; private set; }  // 암살 연출 데이터
+    [field: SerializeField] public InteractionDataSO assassinatedData { get; private set; }  // 암살 연출 데이터 (당하는 입장)
+
     [field: SerializeField] public Transform currentTransform { get; private set; }
 
 
@@ -290,23 +291,34 @@ public class PlayableCharacter : MonoBehaviourPun
 
         if(Physics.Raycast(transform.position + new Vector3(0, 1, 0), Camera.main.transform.forward, out RaycastHit hit, checkDistance, canInteractLayer))
         {
-            if(hit.collider.TryGetComponent<IInteract>(out var interact) && transform.IsTargetInDirection(interact.ActorTrans, DirectionType.Backward, 110f))
+            if(hit.collider.TryGetComponent<IInteractable>(out var interact))
             {
-                // todo: 상호작용 가능 UI 띄우기 등 실행
-                InputHandler.CanInteractMotion = true;
+                IInteract interactInfo = null;
 
-                if (InteractState == null)
+                // 시민, 경비원
+                if (hit.collider.TryGetComponent<BaseAI>(out var ai) || hit.collider.TryGetComponent<PlayableCharacter>(out var p) 
+                    && transform.IsTargetInDirection(ai.transform, DirectionType.Backward, 110f)
+                    && currentTransform.gameObject.activeSelf)
                 {
-                    InteractState = new PlayerAssassinateState(this, StateMachine, interact, interact.interactionData);
+                    interactInfo = interact.GetInteractInfo(InteractionType.Assassinate);
+
+                    if (interactInfo == null) return;
+
+                    // todo: 상호작용 가능 UI 띄우기 등 실행
+                    InputHandler.CanInteractMotion = true;
+
+                    if (InteractState == null || !InteractState.receivers.Contains(interact.GetInteractInfo(InteractionType.Assassinate)))
+                    {
+                        InteractState = new PlayerAssassinateState(this, StateMachine, interactInfo, interactInfo.interactionData);
+                    }
                 }
 
-                // 상호작용 대상이 다를 경우 갱신
-                if (!InteractState.receivers.Contains(interact))
+                // 플레이어 / todo: 상호작용을 받을 수 있는 상태 추가
+                if(hit.collider.TryGetComponent<PlayableCharacter>(out var player))
                 {
-                    Debug.Log("상태 또 진입");
-                    InteractState.SetTarget(interact);
-                    InteractState.Init(interact.interactionData);
+
                 }
+
             }
             else
             {
@@ -331,6 +343,8 @@ public class PlayableCharacter : MonoBehaviourPun
 
         if (isDie)
         {
+            //사망 액션 혹은 그냥 사망 애니메이션 실행
+            Animator.Play("Die");
             if (photonView.IsMine)
             {
                 CheckCameraOnDie();
@@ -458,6 +472,17 @@ public class PlayableCharacter : MonoBehaviourPun
         if (cam != null && cam.ReturnTarget() == this.transform)
         {
             GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
+        }
+    }
+
+    public IInteract GetInteractInfo(InteractionType type)
+    {
+        switch(type)
+        {
+            case InteractionType.Assassinate:
+
+            default:
+                return null;
         }
     }
 }

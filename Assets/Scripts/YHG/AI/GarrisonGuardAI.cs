@@ -214,4 +214,21 @@ public class GarrisonGuardAI : GuardAI
         if (stateMachine != null && stateMachine.CurrentState is GarrisonReturnState) return;
         base.ProcessDamage(damage);
     }
+
+    protected override void SetInteractState()
+    {
+        assassinateState = new GarrisonAssassinateState(this, stateMachine, AIStateID.Assassinate);
+    }
+
+    public override IInteract GetInteractInfo(InteractionType type)
+    {
+        switch (type)
+        {
+            case InteractionType.Assassinate:
+                ChangeState(assassinateState);
+                return assassinateState;
+            default:
+                return null;
+        }
+    }
 }

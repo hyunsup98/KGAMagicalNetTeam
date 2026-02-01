@@ -1701,6 +1701,7 @@ MonoBehaviour:
   myWeapons:
   - {fileID: 7645036434115828256}
   - {fileID: 69803523368727503}
+  <assassinateData>k__BackingField: {fileID: 11400000, guid: 3949edd23f1677b499472911eb92b8e7, type: 2}
   fovAngle: 110
   maxChaseDist: 30
   heightThreshold: 2.5

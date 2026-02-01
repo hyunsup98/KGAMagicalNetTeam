@@ -38,6 +38,11 @@ public class PlayerAssassinateState : PlayerInteractState
     public override void OnInteraction()
     {
         base.OnInteraction();
+
+        foreach(var receiver in receivers)
+        {
+
+        }
     }
 
     public override void OnStopped()

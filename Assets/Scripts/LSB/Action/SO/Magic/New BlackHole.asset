@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6c4557030daa84aae9be04d33629d9, type: 3}
+  m_Name: New BlackHole
+  m_EditorClassIdentifier: Assembly-CSharp::BlackHoleSO
+  itemId: 
+  itemName: 
+  itemImage: {fileID: -1344107406, guid: 6d8544c7faa4bef469fdd516540ae4b7, type: 3}
+  itemPrefab: {fileID: 4884709433383585300, guid: 168ec18d77bec5e4ea426edb6313e402, type: 3}
+  description: 
+  cooldown: 1
+  isDisposable: 0
+  damage: 50
+  knockbackForce: 0
+  radius: 5
+  forceUpward: 1
+  spawnOffset: {x: 0, y: 3, z: 0}
+  magicSound: {fileID: 0}
+  magicType: 4
+  duration: 5
+  pullForce: 40
+  rotationForce: 20
+  explosionForce: 300
+  destroyDelay: 0.5
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0

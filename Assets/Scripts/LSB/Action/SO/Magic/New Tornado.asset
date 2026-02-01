@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TornadoSO
   itemId: 
   itemName: Tornado
-  itemImage: {fileID: 485823971, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
+  itemImage: {fileID: 595206137, guid: 5c0dc0d7c5bfba94eae2544360d37845, type: 3}
   itemPrefab: {fileID: 1704780292850497117, guid: fa93d0bed17cf024384f235ce4ea4247, type: 3}
   description: 
   cooldown: 1
   isDisposable: 0
-  damage: 0
+  damage: 10
   knockbackForce: 0
   radius: 5
   forceUpward: 1

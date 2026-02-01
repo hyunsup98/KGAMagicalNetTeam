@@ -36,6 +36,9 @@ public class GuardAI : BaseAI
     [Header("정밀 판정용 무기 연결")]
     public MeleeWeapon[] myWeapons;
 
+    [field: SerializeField] public InteractionDataSO assassinateData { get; private set; }
+    protected AIAssassinateState assassinateState;
+
 
     protected override void Awake()
     {
@@ -50,6 +53,8 @@ public class GuardAI : BaseAI
                 if (weapon != null) weapon.SetDamage(damage);
             }
         }
+
+        SetInteractState();
     }
 
     protected override void SetInitialState()
@@ -213,4 +218,20 @@ public class GuardAI : BaseAI
         Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 
+    protected virtual void SetInteractState()
+    {
+        assassinateState = new GuardAssassinateState(this, stateMachine, AIStateID.Assassinate);
+    }
+
+    public override IInteract GetInteractInfo(InteractionType type)
+    {
+        switch(type)
+        {
+            case InteractionType.Assassinate:
+                ChangeState(assassinateState);
+                return assassinateState;
+            default:
+                return null;
+        }
+    }
 }

@@ -212,27 +212,11 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
             case MagicType.Tornado:
                 TornadoReaction(data);
                 break;
+
+            case MagicType.BlackHole: // [New] 추가
+                BlackHoleReaction(magic, data);
+                break;
         }
-    }
-
-    public void FireballReaction(GameObject magic, MagicDataSO data, int attackerActorNr)
-    {
-        Vector3 dir = (transform.position - magic.transform.position).normalized;
-        Vector3 force = (dir + Vector3.up * 0.5f) * data.knockbackForce;
-        ApplyRagdoll(force);
-
-        if (baseAI != null)
-            baseAI.TakeDamage(data.damage);
-    }
-
-    public void LightningStrikeReaction(GameObject magic, MagicDataSO data, int attackerActorNr)
-    {
-        Vector3 dir = (transform.position - magic.transform.position).normalized;
-        Vector3 force = (dir + Vector3.up * 0.5f) * data.knockbackForce;
-        ApplyRagdoll(force);
-
-        if (baseAI != null)
-            baseAI.TakeDamage(data.damage);
     }
 
     public void TornadoReaction(MagicDataSO data)
@@ -240,9 +224,33 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         StartCoroutine(CoTornadoReaction(data));
     }
 
+    public void BlackHoleReaction(GameObject magic, MagicDataSO data)
+    {
+        StartCoroutine(CoBlackHoleReaction(magic, data));
+    }
+
+    private IEnumerator CoBlackHoleReaction(GameObject magic, MagicDataSO data)
+    {
+        ApplyRagdoll(Vector3.zero, true);
+
+        yield return new WaitForFixedUpdate();
+
+        Rigidbody hips = GetRagdollHips();
+        if (hips != null)
+        {
+            hips.WakeUp();
+            hips.linearVelocity = Vector3.zero;
+
+            Vector3 dirToBlackHole = (magic.transform.position - transform.position).normalized;
+
+            hips.AddForce((dirToBlackHole + Vector3.up) * 5.0f, ForceMode.Impulse);
+            if (baseAI != null) baseAI.TakeDamage(data.damage);
+        }
+    }
+
     private IEnumerator CoTornadoReaction(MagicDataSO data)
     {
-        if (baseAI != null) baseAI.TakeDamage(0);
+        if (baseAI != null) baseAI.TakeDamage(data.damage);
 
         // 강제 래그돌화
         ApplyRagdoll(Vector3.zero, true);
