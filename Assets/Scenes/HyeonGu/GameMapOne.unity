@@ -7932,9 +7932,6 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 482739224}
   micSound: {fileID: 985800039}
   micSoundMute: {fileID: 1406139575}
-  lowQualityAsset: {fileID: 0}
-  mediumQualityAsset: {fileID: 0}
-  highQualityAsset: {fileID: 0}
   dropdown_GraphicQuality: {fileID: 864484672}
   uiName: GameMenu
   playerInfoPanel: {fileID: 788639308}
@@ -8805,7 +8802,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 0
     Time: 2
     CustomCurve:
       serializedVersion: 2
@@ -16494,7 +16491,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 71e7e056b0480444b8d227fb377aa6a5, type: 2}
   m_BuildHeightMesh: 1

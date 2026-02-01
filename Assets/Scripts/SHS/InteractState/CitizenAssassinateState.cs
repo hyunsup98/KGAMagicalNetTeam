@@ -7,7 +7,7 @@ public class CitizenAssassinateState : AIAssassinateState
     public CitizenAssassinateState(BaseAI ai, StateMachine stateMachine, BaseAI.AIStateID stateID)
         : base(ai, stateMachine, stateID)
     {
-        if (ai is GuardAI)
+        if (ai is CitizenAI)
         {
             citizen = ai as CitizenAI;
             interactionData = citizen.assassinateData;

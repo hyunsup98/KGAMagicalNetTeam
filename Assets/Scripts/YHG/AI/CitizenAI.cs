@@ -16,7 +16,7 @@ public class CitizenAI : BaseAI
 
     private Vector3 startPos;
     //상태가 사용할 변수
-    public Transform detectedPlayer {  get; private set; }
+    public Transform detectedPlayer { get; private set; }
 
     [field: SerializeField] public InteractionDataSO assassinateData { get; private set; }
     protected AIAssassinateState assassinateState;
@@ -25,14 +25,16 @@ public class CitizenAI : BaseAI
     //시작지점 초기화
     protected override void Awake()
     {
-      base.Awake();  
+        base.Awake();
         startPos = transform.position;
+
+        SetInteractState();
     }
     //초기상태 지정
     protected override void SetInitialState()
     {
         //시작은 패트롤
-       ChangeState(new CitizenPatrolState(this, stateMachine));
+        ChangeState(new CitizenPatrolState(this, stateMachine));
     }
 
     //상태클래스용 함수들
@@ -50,7 +52,7 @@ public class CitizenAI : BaseAI
     private Collider[] connectionBuffer = new Collider[1];
     public bool CheckPlayerNearby()
     {
-        int count = Physics.OverlapSphereNonAlloc(transform.position, detectRadius, connectionBuffer ,playerLayer);
+        int count = Physics.OverlapSphereNonAlloc(transform.position, detectRadius, connectionBuffer, playerLayer);
         if (count > 0)
         {
             detectedPlayer = connectionBuffer[0].transform;
@@ -75,7 +77,7 @@ public class CitizenAI : BaseAI
         float minDistSqr = float.MaxValue;
         Vector3 currentPos = transform.position;
 
-       //돌려잇
+        //돌려잇
         foreach (GameObject exit in exits)
         {
             //거리제곱으로 계산
@@ -140,6 +142,11 @@ public class CitizenAI : BaseAI
                 ChangeState(new CitizenPatrolState(this, stateMachine));
                 break;
         }
+    }
+
+    protected virtual void SetInteractState()
+    {
+        assassinateState = new CitizenAssassinateState(this, stateMachine, AIStateID.Assassinate);
     }
 
     public override IInteract GetInteractInfo(InteractionType type)

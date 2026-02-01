@@ -12242,9 +12242,6 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 876037699}
   micSound: {fileID: 913777466}
   micSoundMute: {fileID: 1986390591}
-  lowQualityAsset: {fileID: 0}
-  mediumQualityAsset: {fileID: 0}
-  highQualityAsset: {fileID: 0}
   dropdown_GraphicQuality: {fileID: 569536781}
   uiName: GameMenu
   playerInfoPanel: {fileID: 0}
@@ -23465,7 +23462,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 0
     Time: 2
     CustomCurve:
       serializedVersion: 2
