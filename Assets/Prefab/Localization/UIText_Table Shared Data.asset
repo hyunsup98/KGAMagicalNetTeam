@@ -31,6 +31,54 @@ MonoBehaviour:
     m_Key: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 6112689998082048
+    m_Key: ControlGuide_Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112763050274816
+    m_Key: ControlGuide_Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112788341927936
+    m_Key: ControlGuide_Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112804926205952
+    m_Key: ControlGuide_Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112843480248320
+    m_Key: ControlGuide_Roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112868629295104
+    m_Key: ControlGuide_HandAction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112929836773376
+    m_Key: ControlGuide_Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112948379791360
+    m_Key: ControlGuide_Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113002981240832
+    m_Key: ControlGuide_Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113035801669632
+    m_Key: ControlGuide_Transformation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113061047185408
+    m_Key: ControlGuide_Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113095671164928
+    m_Key: ControlGuide_RoomSetting
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

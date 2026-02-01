@@ -799,8 +799,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815985374}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19337745, y: 0.09913343, z: -0.019643467, w: 0.97590566}
-  m_LocalPosition: {x: 2.7, y: 4.25, z: -6.4300003}
+  m_LocalRotation: {x: 0.06588821, y: 0.100839, z: -0.006692987, w: 0.99269605}
+  m_LocalPosition: {x: 2.7, y: 3, z: -5.4300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2012,10 +2012,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 116397336752664311, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
-      propertyPath: Priority.m_Value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 116397336752664311, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 379417773}
@@ -2062,10 +2058,6 @@ PrefabInstance:
     - target: {fileID: 1416295981975648734, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
       propertyPath: m_Name
       value: CinemachineController
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720893668270093517, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
-      propertyPath: Priority.m_Value
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6889061143709278756, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
       propertyPath: target
