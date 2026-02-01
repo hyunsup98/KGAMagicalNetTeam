@@ -343,6 +343,8 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
 
         if (isDie)
         {
+            //사망 액션 혹은 그냥 사망 애니메이션 실행
+            Animator.Play("Die");
             if (photonView.IsMine)
             {
                 CheckCameraOnDie();
