@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Photon.Pun;
 
 //시민 유닛의 각 상태에 필요한 변수 정리, 센서 기능만 등록
@@ -17,6 +17,9 @@ public class CitizenAI : BaseAI
     private Vector3 startPos;
     //상태가 사용할 변수
     public Transform detectedPlayer {  get; private set; }
+
+    [field: SerializeField] public InteractionDataSO assassinateData { get; private set; }
+    protected AIAssassinateState assassinateState;
 
 
     //시작지점 초기화
@@ -136,6 +139,18 @@ public class CitizenAI : BaseAI
             default:
                 ChangeState(new CitizenPatrolState(this, stateMachine));
                 break;
+        }
+    }
+
+    public override IInteract GetInteractInfo(InteractionType type)
+    {
+        switch (type)
+        {
+            case InteractionType.Assassinate:
+                ChangeState(assassinateState);
+                return assassinateState;
+            default:
+                return null;
         }
     }
 }

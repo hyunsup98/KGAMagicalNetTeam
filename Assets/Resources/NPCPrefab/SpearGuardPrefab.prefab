@@ -4261,6 +4261,7 @@ MonoBehaviour:
   lastAttackTime: 0
   myWeapons:
   - {fileID: 2792500669146000992}
+  <assassinateData>k__BackingField: {fileID: 11400000, guid: 3949edd23f1677b499472911eb92b8e7, type: 2}
 --- !u!114 &3768445575235341513
 MonoBehaviour:
   m_ObjectHideFlags: 0

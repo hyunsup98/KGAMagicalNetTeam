@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
@@ -59,6 +60,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Toggle micSoundMute;
     public Toggle MicSoundMute => micSoundMute;
+
+    [Header("그래픽 품질 세팅")]
+    [SerializeField] private TMP_Dropdown dropdown_GraphicQuality;
 
     [Header("인게임")]
     [SerializeField] string uiName = "GameMenu";
@@ -518,5 +522,15 @@ public class UIManager : MonoBehaviour
     {
         return Mathf.Round(
             (float)resolution.refreshRateRatio.numerator / (float)resolution.refreshRateRatio.denominator * 100f) / 100;
+    }
+
+    /// <summary>
+    /// 그래픽 품질 설정 메서드
+    /// </summary>
+    /// <param name="level"> 0 → 낮음 / 1 → 중간 / 2 → 높음 </param>
+    public void SetQuality()
+    {
+        if(QualitySettings.GetQualityLevel() != dropdown_GraphicQuality.value)
+            QualitySettings.SetQualityLevel(dropdown_GraphicQuality.value);
     }
 }

@@ -57,7 +57,6 @@ public class PlayerInteractState : PlayerStateBase, IInteract
     public override void Exit()
     {
         base.Exit();
-
     }
 
     public override void Execute()
@@ -81,5 +80,6 @@ public class PlayerInteractState : PlayerStateBase, IInteract
     {
         // 인풋시스템 o
         player.InputHandler.OnPlayerInput();
+        player.StateMachine.ChangeState(player.MoveState);
     }
 }

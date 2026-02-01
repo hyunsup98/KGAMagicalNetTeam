@@ -10070,7 +10070,19 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 693229741}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetQuality
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &577144232
 GameObject:
@@ -12230,6 +12242,10 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 876037699}
   micSound: {fileID: 913777466}
   micSoundMute: {fileID: 1986390591}
+  lowQualityAsset: {fileID: 0}
+  mediumQualityAsset: {fileID: 0}
+  highQualityAsset: {fileID: 0}
+  dropdown_GraphicQuality: {fileID: 569536781}
   uiName: GameMenu
   playerInfoPanel: {fileID: 0}
   myInfoPanel: {fileID: 0}
