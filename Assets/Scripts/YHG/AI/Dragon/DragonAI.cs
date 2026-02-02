@@ -6,6 +6,10 @@ using Photon.Pun;
 public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
 {
     public StateMachine stateMachine;
+
+    //가장 가까운?
+    public Transform targetPlayer;
+
     [Header("보스 스탯")]
 
     public float maxHP = 4000f;
@@ -29,9 +33,6 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
     public float bodyCrashRadius = 5.0f;
     public float flightDistance = 40.0f;
 
-    //가장 가까운?
-    public Transform targetPlayer;
-
     [Header("전투 설정")]
     [Tooltip("물기/앞발 각도")]
     public float angleFrontNarrow = 30.0f;
@@ -54,6 +55,8 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
         stateMachine = new StateMachine();
         currentHP = maxHP;
 
+        stateMachine.InitState(new DragonSleepState(this, stateMachine));
+
         //데미지 주입
         if (jawWeapon) jawWeapon.SetDamage(15);
         if (leftClaw) leftClaw.SetDamage(10);
@@ -63,7 +66,6 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
 
     private void Start()
     {
-        stateMachine.InitState(new DragonSleepState(this, stateMachine));
     }
 
     private void Update()
@@ -77,9 +79,9 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
     {
         photonView.RPC(nameof(RpcOnWakeUp), RpcTarget.All);
     }
+    [PunRPC]
     void RpcOnWakeUp()
     {
-        //연출(포효?정도 근데 시네머신 쓰는 게 나을 거 같음)
         if (PhotonNetwork.IsMasterClient)
         {
             stateMachine.ChangeState(new DragonChaseState(this, stateMachine));
@@ -90,6 +92,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
     public void FindClosestTarget()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
         float closestDist = float.MaxValue;
         Transform bestTarget = null;
 
@@ -169,7 +172,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
             case "Jaw": if (jawWeapon) jawWeapon.EnableHitbox(); break;
             case "Claw": 
                 if (leftClaw) leftClaw.EnableHitbox();
-                if (leftClaw) leftClaw.EnableHitbox(); 
+                if (rightClaw) rightClaw.EnableHitbox(); 
                 break;
             case "Tail": if (tailWeapon) tailWeapon.EnableHitbox(); break;
         }
@@ -189,5 +192,9 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
         //몸통 박치기 범위
         Gizmos.color = new Color(1, 0, 0, 0.3f);
         Gizmos.DrawSphere(transform.position, bodyCrashRadius);
+    }
+
+    public void PlayAudio(Object clip)
+    {
     }
 }
