@@ -128,7 +128,8 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
         if (damageCoroutine_Die != null)
             StopCoroutine(damageCoroutine_Die);
 
-        etcObjects.SetActive(false);
+        if(etcObjects  != null)
+            etcObjects.SetActive(false);
     }
 
     float GetFryingPanHP()
