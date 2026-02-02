@@ -316,13 +316,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
                         InteractState = new PlayerAssassinateState(this, StateMachine, interactInfo, interactInfo.interactionData);
                     }
                 }
-
-                // 플레이어 / todo: 상호작용을 받을 수 있는 상태 추가
-                if(hit.collider.TryGetComponent<PlayableCharacter>(out var player))
-                {
-
-                }
-
             }
             else
             {
@@ -347,7 +340,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
             receiversID[i] = receiverID.ViewID;
         }
 
-        Debug.Log("RPC 전송 준비 완료");
 
         photonView.RPC(nameof(RPC_TimelinePlay), RpcTarget.All, (int)type, executerID.ViewID, receiversID);
     }
@@ -376,7 +368,6 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
         {
             Debug.Log(receiver.ActorTrans.name);
         }
-        Debug.Log("RPC 수신 완료");
 
         InteractionManager.RequestInteraction(photonView.IsMine, executer, receivers);
     }

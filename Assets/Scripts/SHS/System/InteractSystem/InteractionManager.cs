@@ -23,7 +23,7 @@ public class InteractionManager : MonoBehaviour
     {
         if (executer == null || receivers == null) return;
 
-        Debug.Log("상호작용 메서드 진입");
+        Debug.Log(isMine);
 
         InteractionDataSO data = receivers[0].interactionData;
 
@@ -52,7 +52,7 @@ public class InteractionManager : MonoBehaviour
 
         TimelineSetting(data, isMine, executer, receivers);
 
-        Play();
+        Play(isMine);
     }
 
     // 타임라인 포지션 등 세팅
@@ -65,12 +65,13 @@ public class InteractionManager : MonoBehaviour
 
         var tracks = data.timelineAsset.GetOutputTracks().ToArray();
         SetTrackValue(data, isMine, tracks, executer, receivers);
-        SetTransform(data, executer, receivers);
+        SetTransform(data, isMine, executer, receivers);
     }
 
-    private void Play()
+    private void Play(bool isMine)
     {
-        ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.CutScene);
+        if(isMine)
+            ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.CutScene);
 
         interactSystem.PlayInteract();
         pd.stopped += Stop;
@@ -80,7 +81,8 @@ public class InteractionManager : MonoBehaviour
 
     private void Stop(PlayableDirector pd)
     {
-        ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.InGame);
+        if(ProjectManager.Instance != null)
+            ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.InGame);
         interactSystem.EndInteract();
         pd.playableAsset = null;
     }
@@ -91,12 +93,10 @@ public class InteractionManager : MonoBehaviour
         if (isMine)
         {
             pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
-            Debug.Log("내 플레이어");
         }
         else
         {
-            tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))].muted = true;
-            Debug.Log("타 플레이어");
+
         }
 
         pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Executer"))], executer.ActorTrans.gameObject);
@@ -118,7 +118,7 @@ public class InteractionManager : MonoBehaviour
     }
 
     // 기준 트랜스폼에 맞게 나머지 트랙들의 오브젝트 트랜스폼도 반영
-    private void SetTransform(InteractionDataSO data, IInteract executer, params IInteract[] receivers)
+    private void SetTransform(InteractionDataSO data, bool isMine, IInteract executer, params IInteract[] receivers)
     {
         // 누가 기준 트랜스폼인지에 따라 위치 보정
         Transform pivotTrans;
@@ -148,7 +148,7 @@ public class InteractionManager : MonoBehaviour
             executer.ActorTrans.root.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Executer.rotation);
         }
 
-        if (data.offset_Camera.isApply)
+        if (data.offset_Camera.isApply && isMine)
         {
             ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.position = pivotTrans.TransformPoint(data.offset_Camera.position);
             ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Camera.rotation);
