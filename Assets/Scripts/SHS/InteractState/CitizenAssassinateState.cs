@@ -33,11 +33,11 @@ public class CitizenAssassinateState : AIAssassinateState
 
     public override void OnInteraction()
     {
-
+        base.OnInteraction();
     }
 
     public override void OnStopped()
     {
-
+        base.OnStopped();
     }
 }

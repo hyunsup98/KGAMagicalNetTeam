@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class AIAssassinateState : AIStateBase, IInteract
@@ -44,6 +43,6 @@ public class AIAssassinateState : AIStateBase, IInteract
 
     public virtual void OnStopped()
     {
-
+        ai.TakeDamage(999f);
     }
 }
