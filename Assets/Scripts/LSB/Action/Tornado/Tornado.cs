@@ -39,6 +39,9 @@ public class Tornado : MonoBehaviourPun
 
             StartCoroutine(LifetimeRoutine());
         }
+
+        if (data != null && data.magicSound != null)
+            SoundManager.Instance.PlaySFX(data.magicSound, 1f, 100f, transform.position);
     }
 
     private void Update()

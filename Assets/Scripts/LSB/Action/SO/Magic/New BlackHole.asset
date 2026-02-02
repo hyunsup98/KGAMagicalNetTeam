@@ -24,7 +24,7 @@ MonoBehaviour:
   radius: 5
   forceUpward: 1
   spawnOffset: {x: 0, y: 3, z: 0}
-  magicSound: {fileID: 0}
+  magicSound: {fileID: 8300000, guid: 650f2ce28a89821418d5e6448e1f698e, type: 3}
   magicType: 4
   duration: 5
   pullForce: 40
