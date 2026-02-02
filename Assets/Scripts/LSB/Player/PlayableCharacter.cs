@@ -334,7 +334,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
 
         int[] receiversID = new int[receivers.Length];
 
-        for(int i = 0; i <  receiversID.Length; i++)
+        for(int i = 0; i < receiversID.Length; i++)
         {
             if (!receivers[i].Interactable.TryGetComponent<PhotonView>(out var receiverID)) return;
 
