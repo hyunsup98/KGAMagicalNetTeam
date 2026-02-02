@@ -302,7 +302,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
                 // 시민, 경비원
                 if (hit.collider.TryGetComponent<BaseAI>(out var ai) || hit.collider.TryGetComponent<PlayableCharacter>(out var p) 
                     && transform.IsTargetInDirection(ai.transform, DirectionType.Backward, 110f)
-                    && currentTransform.gameObject.activeSelf)
+                    && currentTransform.gameObject.activeSelf && TransformationController.IsWizard)
                 {
                     interactInfo = interact.GetInteractInfo(InteractionType.Assassinate);
 
