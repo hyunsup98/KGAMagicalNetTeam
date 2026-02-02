@@ -35,9 +35,6 @@ public class DragonPhaseState : BossStateBase
         //무적 해제
         Collider bodyCol = dragon.GetComponent<Collider>();
         if (bodyCol != null) bodyCol.enabled = true;
-
-        //바로 데스윙 
-        stateMachine.ChangeState(new DragonFlightState(dragon, stateMachine));
     }
     public override void Exit()
     {
