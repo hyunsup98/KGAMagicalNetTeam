@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolymorphMagicSO
   itemId: 
   itemName: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 1019859777, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
   itemPrefab: {fileID: 5000085408619585265, guid: 426f71e71e6d62c4bb82a56ae87f2794, type: 3}
   description: 
   cooldown: 2
