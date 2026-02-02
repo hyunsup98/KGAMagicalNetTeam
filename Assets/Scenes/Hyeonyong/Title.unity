@@ -4596,7 +4596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServerConnector
   roomSceneName: Room_new
-  onTest: 1
+  onTest: 0
   titleAudio: {fileID: 8300000, guid: c94cf4c03aae0b74d95281615b5011d2, type: 3}
 --- !u!4 &318443349
 Transform:
@@ -6751,7 +6751,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680165442}
-  - component: {fileID: 680165446}
   - component: {fileID: 680165444}
   - component: {fileID: 680165443}
   - component: {fileID: 680165445}
@@ -6878,39 +6877,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
---- !u!114 &680165446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680165441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 904819e256a2a634a824f8942f7aa445, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DropdownLocalized
-  dropdown: {fileID: 0}
-  keyOptions: []
-  localizedFont:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  localizedMaterial:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &702415782
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,19 +23,156 @@ MonoBehaviour:
     m_Key: Material Preset
     m_Metadata:
       m_Items: []
-  - m_Id: 6298639634083840
-    m_Key: Title/Title/SettingPannel/Quality/Template/Viewport/Content/Item/Item
-      Label
+  - m_Id: 6343697292931072
+    m_Key: Login/Login/RegisterBtn/Text (TMP)
     m_Metadata:
       m_Items: []
-  - m_Id: 6299239335669760
-    m_Key: Title/Title/SettingPannel/Language/Template/Viewport/Content/Item/Item
-      Label
+  - m_Id: 6343697318096896
+    m_Key: Login/Login/RegisterBtn/Text (TMP) 1
     m_Metadata:
       m_Items: []
-  - m_Id: 6299567246356480
-    m_Key: Title/Title/SettingPannel/ResolutionWindow/Template/Viewport/Content/Item/Item
-      Label
+  - m_Id: 6343885482962944
+    m_Key: Login/Login/EmailInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343885499740160
+    m_Key: Login/Login/EmailInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6344199485337600
+    m_Key: Login/Login/PasswordInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6344199502114816
+    m_Key: Login/Login/PasswordInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6344419770183680
+    m_Key: Login/Login/NicknameInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6344419782766592
+    m_Key: Login/Login/NicknameInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6346177150005248
+    m_Key: Lobby/Canvas/NicknameInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6346177170976768
+    m_Key: Lobby/Canvas/NicknameInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6346484810592256
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6346484823175168
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6347402528501760
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6347402545278976
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6349007466344448
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6349007642505216
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6349675300204544
+    m_Key: Lobby/Canvas/NicknameInputField/Text Area/Placeholder 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6349675316981760
+    m_Key: Lobby/Canvas/NicknameInputField/Text Area/Placeholder 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6350340118360064
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6350340135137280
+    m_Key: Lobby/Canvas/NicknameChangeBtn/Text (TMP) 7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6350816306081792
+    m_Key: Lobby/Canvas/ColorDropdown/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6350816327053312
+    m_Key: Lobby/Canvas/ColorDropdown/Label 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6352261470302208
+    m_Key: Lobby/Canvas/ReturnToLoginButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6352261491273728
+    m_Key: Lobby/Canvas/ReturnToLoginButton/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6354434816028672
+    m_Key: Login/Login/LoginBtn/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6354434971217920
+    m_Key: Login/Login/LoginBtn/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355019837550592
+    m_Key: Lobby/Canvas/JoinInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355019862716416
+    m_Key: Lobby/Canvas/JoinInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355514345992192
+    m_Key: Lobby/Canvas/JoinRoomBtn/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355514366963712
+    m_Key: Lobby/Canvas/JoinRoomBtn/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355779476336640
+    m_Key: Lobby/Canvas/CreateInputField/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6355779497308160
+    m_Key: Lobby/Canvas/CreateInputField/Text Area/Placeholder 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356028404084736
+    m_Key: Lobby/Canvas/CreateRoomBtn/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356028425056256
+    m_Key: Lobby/Canvas/CreateRoomBtn/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356384286584832
+    m_Key: Lobby/Canvas/QuickJoinBtn/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356384307556352
+    m_Key: Lobby/Canvas/QuickJoinBtn/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356549529579520
+    m_Key: Lobby/Canvas/RefreshButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6356549550551040
+    m_Key: Lobby/Canvas/RefreshButton/Text (TMP) 1
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -60,18 +197,84 @@ MonoBehaviour:
           - ko
           - en
           - ja
-        - m_KeyId: 6298639634083840
+        - m_KeyId: 6344419770183680
           m_TableCodes:
           - ko
           - ja
-        - m_KeyId: 6299239335669760
+        - m_KeyId: 6344199485337600
           m_TableCodes:
           - ko
           - ja
-        - m_KeyId: 6299567246356480
+        - m_KeyId: 6343885482962944
           m_TableCodes:
           - ko
           - ja
+        - m_KeyId: 6343697292931072
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6346177150005248
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6346484810592256
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6347402528501760
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6349007466344448
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6349675300204544
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6350340118360064
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6350816306081792
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6352261470302208
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6354434816028672
+          m_TableCodes:
+          - ko
+          - ja
+          - en
+        - m_KeyId: 6355019837550592
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6355514345992192
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6355779476336640
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356028404084736
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356384286584832
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356549529579520
+          m_TableCodes:
+          - ko
+          - ja
+          - en
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
     - rid: 579319845140562011
@@ -83,5 +286,83 @@ MonoBehaviour:
           - ko
           - en
           - ja
+        - m_KeyId: 6343697318096896
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6343885499740160
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6344199502114816
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6344419782766592
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6346177170976768
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6346484823175168
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6347402545278976
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6349007642505216
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6349675316981760
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6350340135137280
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6350816327053312
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6352261491273728
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6354434971217920
+          m_TableCodes:
+          - ko
+          - ja
+          - en
+        - m_KeyId: 6355019862716416
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6355514366963712
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6355779497308160
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356028425056256
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356384307556352
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6356549550551040
+          m_TableCodes:
+          - ko
+          - ja
+          - en
         m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null

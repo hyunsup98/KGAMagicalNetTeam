@@ -155,6 +155,86 @@ MonoBehaviour:
     m_Key: Setting_ScreenMode_Window
     m_Metadata:
       m_Items: []
+  - m_Id: 6343091299889152
+    m_Key: Login_BackToMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343154214449152
+    m_Key: Login_SignUp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343196866326528
+    m_Key: Login_Email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343217867206656
+    m_Key: Login_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343246396862464
+    m_Key: Login_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345416626221056
+    m_Key: Lobby_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345470325895168
+    m_Key: Lobby_SetNickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345530212167680
+    m_Key: Lobby_EnterRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345580770308096
+    m_Key: Lobby_EnterRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345598570934272
+    m_Key: Lobby_CreateRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345618560987136
+    m_Key: Lobby_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345639276654592
+    m_Key: Lobby_QuickStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345673682530304
+    m_Key: Lobby_BackToLogin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345731509399552
+    m_Key: Lobby_Research
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351981454372864
+    m_Key: 'Lobby_SetColor '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351986277822464
+    m_Key: Lobby_SetColor_Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351988056207360
+    m_Key: Lobby_SetColor_Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351989868146688
+    m_Key: Lobby_SetColor_Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351991688474624
+    m_Key: Lobby_SetColor_Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351993454276608
+    m_Key: Lobby_SetColor_Pink
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
