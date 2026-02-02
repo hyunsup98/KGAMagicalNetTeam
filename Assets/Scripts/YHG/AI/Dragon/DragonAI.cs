@@ -12,6 +12,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
 
     [Header("보스 스탯")]
 
+    public float attackRange = 10.0f;
     public float maxHP = 4000f;
     public float currentHP;
     public bool isPhaseTwo = false; //2페
@@ -29,6 +30,10 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
     public MeleeWeapon rightClaw;    //앞발
     public MeleeWeapon tailWeapon;  //꼬리
 
+    [Header("브레스 설정")]
+    public MeleeWeapon breathWeapon;    
+    public ParticleSystem breathEffect; 
+
     [Header("데스윙")]
     public float bodyCrashRadius = 5.0f;
     public float flightDistance = 40.0f;
@@ -44,10 +49,10 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
     public float angleBackTail = 90.0f; // 90이면 90도~180도(완전 뒤) = 후방 180도
 
     [Tooltip("직선 브레스 거리")]
-    public float distLongRange = 7.0f;
+    public float distLongRange = 15.0f;
 
     [Tooltip("전투 이탈")]
-    public float distCombatExit = 12.0f;
+    public float distCombatExit = 25.0f;
 
 
     private void Awake()
@@ -58,10 +63,18 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
         stateMachine.InitState(new DragonSleepState(this, stateMachine));
 
         //데미지 주입
-        if (jawWeapon) jawWeapon.SetDamage(15);
-        if (leftClaw) leftClaw.SetDamage(10);
-        if (rightClaw) rightClaw.SetDamage(10);
-        if (tailWeapon) tailWeapon.SetDamage(12);
+        if (breathWeapon) breathWeapon.SetDamage(2);
+        if (jawWeapon) jawWeapon.SetDamage(2);
+        if (leftClaw) leftClaw.SetDamage(2);
+        if (rightClaw) rightClaw.SetDamage(2);
+        if (tailWeapon) tailWeapon.SetDamage(2);
+
+        if (breathEffect != null)
+        {
+            breathEffect.Stop();
+            var emission = breathEffect.emission;
+            emission.enabled = false; //확실히
+        }
     }
 
     private void Start()
@@ -175,6 +188,15 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
                 if (rightClaw) rightClaw.EnableHitbox(); 
                 break;
             case "Tail": if (tailWeapon) tailWeapon.EnableHitbox(); break;
+            case "Breath":
+                if (breathWeapon) breathWeapon.EnableHitbox();
+                if (breathEffect)
+                {
+                    var emission = breathEffect.emission;
+                    emission.enabled = true; //파티클 방출 시작
+                    breathEffect.Play();
+                }
+                break;
         }
     }
 
@@ -184,6 +206,13 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
         if (leftClaw) leftClaw.DisableHitbox();
         if (rightClaw) rightClaw.DisableHitbox();
         if (tailWeapon) tailWeapon.DisableHitbox();
+
+        if (breathWeapon) breathWeapon.DisableHitbox();
+        if (breathEffect)
+        {
+            var emission = breathEffect.emission;
+            emission.enabled = false;
+        }
     }
 
 

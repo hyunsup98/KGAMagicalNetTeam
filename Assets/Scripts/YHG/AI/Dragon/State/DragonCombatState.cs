@@ -3,6 +3,8 @@ using UnityEngine;
 public class DragonCombatState : BossStateBase
 {
     private float attackCooldown = 3.0f;
+    private float trackingDuration = 2.0f;
+
     private float lastAttackTime = 0f;
 
     public DragonCombatState(DragonAI dragon, StateMachine stateMachine) 
@@ -14,6 +16,7 @@ public class DragonCombatState : BossStateBase
         {
             dragon.agent.isStopped = true;
             dragon.agent.velocity = Vector3.zero;
+            dragon.agent.updateRotation = false;
         }
 
         lastAttackTime = Time.time - 1.0f;
@@ -33,18 +36,39 @@ public class DragonCombatState : BossStateBase
         float angle = Vector3.SignedAngle(dragon.transform.forward, toTarget, Vector3.up);
         float absAngle = Mathf.Abs(angle);
 
-        //멀면 추격(일단 12미터)
+        //멀면 추격
         if (dist > dragon.distCombatExit)
         {
             stateMachine.ChangeState(new DragonChaseState(dragon, stateMachine));
             return;
         }
 
+        //쿨타임은 3초 회전 2초
+        if (Time.time < lastAttackTime + trackingDuration)
+        {
+            RotateTowardsTarget();
+        }
+
+
         //쿨
         if (Time.time >= lastAttackTime + attackCooldown)
         {
             DecideAttackPattern(absAngle, dist);
             lastAttackTime = Time.time;
+        }
+    }
+
+    private void RotateTowardsTarget()
+    {
+        if (dragon.targetPlayer == null) return;
+
+        Vector3 direction = (dragon.targetPlayer.position - dragon.transform.position).normalized;
+        direction.y = 0; //y축 회전 방지
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            //부드럽게 회전 (Time.deltaTime * 회전속도)
+            dragon.transform.rotation = Quaternion.Slerp(dragon.transform.rotation, lookRotation, Time.deltaTime * dragon.rotSpeed);
         }
     }
     //패턴
@@ -86,6 +110,10 @@ public class DragonCombatState : BossStateBase
     }
     public override void Exit()
     {
-        if (dragon.agent != null) dragon.agent.isStopped = false;
+        if (dragon.agent != null)
+        {
+            dragon.agent.isStopped = false;
+            dragon.agent.updateRotation = true;
+        }
     }
 }

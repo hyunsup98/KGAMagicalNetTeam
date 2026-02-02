@@ -28,7 +28,7 @@ public class DragonChaseState : BossStateBase
         float dist = Vector3.Distance(dragon.transform.position, dragon.targetPlayer.position);
 
         //공격 사거리 들어오면 전투로 전환
-        if (dist <= 4.0f)//하드코딩
+        if (dist <= dragon.attackRange)//하드코딩
         {
             stateMachine.ChangeState(new DragonCombatState(dragon, stateMachine));
         }
