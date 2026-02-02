@@ -23,6 +23,21 @@ MonoBehaviour:
     m_Key: Material Preset
     m_Metadata:
       m_Items: []
+  - m_Id: 6298639634083840
+    m_Key: Title/Title/SettingPannel/Quality/Template/Viewport/Content/Item/Item
+      Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6299239335669760
+    m_Key: Title/Title/SettingPannel/Language/Template/Viewport/Content/Item/Item
+      Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6299567246356480
+    m_Key: Title/Title/SettingPannel/ResolutionWindow/Template/Viewport/Content/Item/Item
+      Label
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 579319845140562010
@@ -44,6 +59,18 @@ MonoBehaviour:
           m_TableCodes:
           - ko
           - en
+          - ja
+        - m_KeyId: 6298639634083840
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6299239335669760
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6299567246356480
+          m_TableCodes:
+          - ko
           - ja
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null

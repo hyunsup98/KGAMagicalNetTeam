@@ -79,6 +79,82 @@ MonoBehaviour:
     m_Key: ControlGuide_RoomSetting
     m_Metadata:
       m_Items: []
+  - m_Id: 6236874422431744
+    m_Key: Setting_BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236965371719680
+    m_Key: Setting_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236999735652352
+    m_Key: Setting_VoiceListen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237019566321664
+    m_Key: Setting_VoiceSpeak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237053062033408
+    m_Key: Setting_Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237102122807296
+    m_Key: Setting_GraphicQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237134993567744
+    m_Key: Setting_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237150105645056
+    m_Key: Setting_InverseX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237177687388160
+    m_Key: Setting_InverseY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237195936804864
+    m_Key: Setting_Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237215725531136
+    m_Key: Setting_ScreenMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286397580587008
+    m_Key: Setting_QualityLow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286466543333376
+    m_Key: Setting_QualityMiddle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286492535435264
+    m_Key: Setting_QualityHigh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287662461038592
+    m_Key: Setting_Language_ko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287755587170304
+    m_Key: Setting_Language_en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287775182958592
+    m_Key: Setting_Language_ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6289993625841664
+    m_Key: Setting_ScreenMode_Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6290076610146304
+    m_Key: Setting_ScreenMode_Window
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

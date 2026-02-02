@@ -82,6 +82,82 @@ MonoBehaviour:
     m_Localized: Room Setting/ViewPoint Change
     m_Metadata:
       m_Items: []
+  - m_Id: 6236874422431744
+    m_Localized: BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236965371719680
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236999735652352
+    m_Localized: Speaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237019566321664
+    m_Localized: Microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237053062033408
+    m_Localized: Mouse Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237102122807296
+    m_Localized: Graphic Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237134993567744
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237150105645056
+    m_Localized: Inverse X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237177687388160
+    m_Localized: Inverse Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237195936804864
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237215725531136
+    m_Localized: Screen Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286397580587008
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286466543333376
+    m_Localized: Middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286492535435264
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287662461038592
+    m_Localized: Korean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287755587170304
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287775182958592
+    m_Localized: Japanese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6289993625841664
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6290076610146304
+    m_Localized: Window Screen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
