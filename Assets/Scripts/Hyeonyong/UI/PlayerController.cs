@@ -165,10 +165,7 @@ public class PlayerController : MonoBehaviourPun, IDamageable, IMagicInteractabl
     public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
         if (pv.OwnerActorNr == attackerActorNr) return;
-        if (attackerActorNr != 0)
-        {
-            if (!IsFriendlyFireOn()) return;
-        }
+        if (!IsFriendlyFireOn()) return;
         
 
         switch (data.magicType)
