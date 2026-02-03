@@ -45,8 +45,7 @@ public class DragonFlightState : BossStateBase
         isTakingOff = true;
         takeOffTimer = 0f;
         startGroundPos = dragon.transform.position; //현재 바닥 위치 기준점 잡기
-
-        dragon.PlayAnimTrigger("Fly Idle");
+        dragon.PlayAnimCrossFade("Fly Idle", 0.1f);
 
         dragon.DisableWeaponHitbox();
         hitPlayerIDs.Clear();

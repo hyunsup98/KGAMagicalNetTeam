@@ -18267,7 +18267,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5c1a7f08c15994365a2d0b0afba374a3, type: 3}
   m_Controller: {fileID: 9100000, guid: e9ac7e22f6f1e714ca2034e93faf4c3d, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -18426,13 +18426,13 @@ MonoBehaviour:
     Name: Fire Head 2
   - Type: 9
     SynchronizeType: 0
-    Name: Fly Glide
-  - Type: 9
-    SynchronizeType: 0
     Name: Reassemble
   - Type: 9
     SynchronizeType: 0
     Name: Collapse
+  - Type: 9
+    SynchronizeType: 0
+    Name: Fly Idlle
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -18451,11 +18451,11 @@ MonoBehaviour:
   fireballMagicData: {fileID: 11400000, guid: 22e929b5bcc3f4f48bb0640059ecea69, type: 2}
   mouthPos: {fileID: 1868594547279510943}
   targetPlayer: {fileID: 0}
-  attackRange: 8
+  attackRange: 9
   maxHP: 500
   currentHP: 0
   isPhaseTwo: 0
-  runSpeed: 6
+  runSpeed: 8
   rotSpeed: 5
   anim: {fileID: 1897421205717162974}
   agent: {fileID: 6647382703162966248}

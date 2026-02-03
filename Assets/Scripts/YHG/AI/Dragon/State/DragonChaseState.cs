@@ -24,15 +24,21 @@ public class DragonChaseState : BossStateBase
             if (dragon.targetPlayer == null) return;
         }
 
-        //거리
-        float dist = Vector3.Distance(dragon.transform.position, dragon.targetPlayer.position);
+        Vector3 myPos = dragon.transform.position;
+        Vector3 targetPos = dragon.targetPlayer.position;
+
+        myPos.y = 0;
+        targetPos.y = 0;
+
+        float dist = Vector3.Distance(myPos, targetPos);
+
 
         //공격 사거리 들어오면 전투로 전환
-        if (dist <= dragon.attackRange)//하드코딩
+        if (dist <= dragon.attackRange)
         {
             stateMachine.ChangeState(new DragonCombatState(dragon, stateMachine));
         }
-        else
+        if (dragon.agent != null && dragon.agent.enabled)
         {
             //계속 추격
             if (dragon.agent != null)

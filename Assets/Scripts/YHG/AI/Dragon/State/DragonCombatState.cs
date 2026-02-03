@@ -3,8 +3,6 @@ using UnityEngine;
 public class DragonCombatState : BossStateBase
 {
     private float attackCooldown = 3.0f;
-    private float trackingDuration = 2.0f;
-
     private float lastAttackTime = 0f;
 
     private bool isAttacking = false;
@@ -40,7 +38,8 @@ public class DragonCombatState : BossStateBase
             {
                 isAttacking = false;
                 lastAttackTime = Time.time;     
-                dragon.PlayAnimTrigger("Idle"); 
+                dragon.PlayAnimTrigger("Idle");
+                dragon.FindRandomTarget();
             }
             return; 
         }
@@ -57,13 +56,6 @@ public class DragonCombatState : BossStateBase
             return;
         }
 
-        //쿨타임은 3초 회전 2초
-        if (Time.time < lastAttackTime + trackingDuration)
-        {
-            RotateTowardsTarget();
-        }
-
-
         //쿨
         if (Time.time >= lastAttackTime + attackCooldown)
         {
@@ -72,18 +64,6 @@ public class DragonCombatState : BossStateBase
         }
     }
 
-    private void RotateTowardsTarget()
-    {
-        if (dragon.targetPlayer == null) return;
-
-        Vector3 direction = (dragon.targetPlayer.position - dragon.transform.position).normalized;
-        direction.y = 0; //y축 회전 방지
-        if (direction != Vector3.zero)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            dragon.transform.rotation = Quaternion.Slerp(dragon.transform.rotation, lookRotation, Time.deltaTime * dragon.rotSpeed);
-        }
-    }
     //패턴
     private void DecideAttackPattern(float absAngle, float dist)
     {
@@ -95,6 +75,7 @@ public class DragonCombatState : BossStateBase
             dragon.PlayAnimTrigger("TailWhip");
             attackEndTime = Time.time + 1.5f;
         }
+
         //전방
         else
         {
@@ -105,7 +86,7 @@ public class DragonCombatState : BossStateBase
                 dragon.ShootFireball();
                 attackEndTime = Time.time + 1.5f;
             }
-            else if (dist > 8.0f)
+            else if (dist > 7.0f)
             {
                 if (absAngle <= dragon.angleFrontWide)
                 {

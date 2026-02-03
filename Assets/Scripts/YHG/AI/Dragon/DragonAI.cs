@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
-
+using System.Collections.Generic;
 //보스 본체
 public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractable
 {
@@ -259,5 +259,49 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
         TakeDamage(data.damage);
+    }
+
+    //강제애니전환(플라이트용)
+    public void PlayAnimCrossFade(string stateName, float transitionDuration = 0.1f)
+    {
+        photonView.RPC(nameof(RpcPlayAnimCrossFade), RpcTarget.All, stateName, transitionDuration);
+    }
+
+    [PunRPC]
+    void RpcPlayAnimCrossFade(string stateName, float transitionDuration)
+    {
+        if (anim != null) anim.CrossFadeInFixedTime(stateName, transitionDuration, 0);
+    }
+
+    //타겟팅로직변경
+    public void FindRandomTarget()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        List<Transform> alivePlayers = new List<Transform>();
+
+        foreach (var p in players)
+        {
+            if (p == null) continue;
+
+            PhotonView pv = p.GetComponent<PhotonView>();
+            if (pv != null && pv.Owner != null)
+            {
+                //커스텀 프로퍼티 생존 확인
+                bool isAlive = pv.Owner.GetProps<bool>(NetworkProperties.PLAYER_ALIVE);
+                if (!isAlive) continue;
+            }
+            alivePlayers.Add(p.transform);
+        }
+
+        //목록이 있으면 랜덤으로 하나 뽑기
+        if (alivePlayers.Count > 0)
+        {
+            int rnd = Random.Range(0, alivePlayers.Count);
+            targetPlayer = alivePlayers[rnd];
+        }
+        else
+        {
+            targetPlayer = null;
+        }
     }
 }

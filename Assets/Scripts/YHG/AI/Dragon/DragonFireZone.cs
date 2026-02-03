@@ -6,7 +6,7 @@ public class DragonFireZone : MonoBehaviourPun
 {
     [Header("설정")]
     public float lifeTime = 5.0f;      
-    public float damagePerTick = 50f; 
+    public float damagePerTick = 5f; 
 
     private void Start()
     {

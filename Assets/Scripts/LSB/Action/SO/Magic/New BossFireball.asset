@@ -20,7 +20,7 @@ MonoBehaviour:
   cooldown: 1
   isDisposable: 0
   damage: 5
-  knockbackForce: 30
+  knockbackForce: 0
   radius: 5
   forceUpward: 0
   spawnOffset: {x: 0, y: 0, z: 0}
