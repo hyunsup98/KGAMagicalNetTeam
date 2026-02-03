@@ -94,10 +94,6 @@ public class InteractionManager : MonoBehaviour
         {
             pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
         }
-        else
-        {
-
-        }
 
         pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Executer"))], executer.ActorTrans.gameObject);
 
@@ -148,7 +144,7 @@ public class InteractionManager : MonoBehaviour
             executer.ActorTrans.root.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Executer.rotation);
         }
 
-        if (data.offset_Camera.isApply && isMine)
+        if (isMine && data.offset_Camera.isApply)
         {
             ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.position = pivotTrans.TransformPoint(data.offset_Camera.position);
             ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Camera.rotation);

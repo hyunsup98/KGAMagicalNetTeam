@@ -79,6 +79,214 @@ MonoBehaviour:
     m_Key: ControlGuide_RoomSetting
     m_Metadata:
       m_Items: []
+  - m_Id: 6236874422431744
+    m_Key: Setting_BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236965371719680
+    m_Key: Setting_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236999735652352
+    m_Key: Setting_VoiceListen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237019566321664
+    m_Key: Setting_VoiceSpeak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237053062033408
+    m_Key: Setting_Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237102122807296
+    m_Key: Setting_GraphicQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237134993567744
+    m_Key: Setting_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237150105645056
+    m_Key: Setting_InverseX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237177687388160
+    m_Key: Setting_InverseY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237195936804864
+    m_Key: Setting_Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237215725531136
+    m_Key: Setting_ScreenMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286397580587008
+    m_Key: Setting_QualityLow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286466543333376
+    m_Key: Setting_QualityMiddle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286492535435264
+    m_Key: Setting_QualityHigh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287662461038592
+    m_Key: Setting_Language_ko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287755587170304
+    m_Key: Setting_Language_en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287775182958592
+    m_Key: Setting_Language_ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6289993625841664
+    m_Key: Setting_ScreenMode_Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6290076610146304
+    m_Key: Setting_ScreenMode_Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343091299889152
+    m_Key: Login_BackToMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343154214449152
+    m_Key: Login_SignUp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343196866326528
+    m_Key: Login_Email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343217867206656
+    m_Key: Login_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343246396862464
+    m_Key: Login_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345416626221056
+    m_Key: Lobby_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345470325895168
+    m_Key: Lobby_SetNickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345530212167680
+    m_Key: Lobby_EnterRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345580770308096
+    m_Key: Lobby_EnterRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345598570934272
+    m_Key: Lobby_CreateRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345618560987136
+    m_Key: Lobby_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345639276654592
+    m_Key: Lobby_QuickStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345673682530304
+    m_Key: Lobby_BackToLogin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345731509399552
+    m_Key: Lobby_Research
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351981454372864
+    m_Key: 'Lobby_SetColor '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351986277822464
+    m_Key: Lobby_SetColor_Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351988056207360
+    m_Key: Lobby_SetColor_Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351989868146688
+    m_Key: Lobby_SetColor_Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351991688474624
+    m_Key: Lobby_SetColor_Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351993454276608
+    m_Key: Lobby_SetColor_Pink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521783556845568
+    m_Key: Room_BackToLobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522707188723712
+    m_Key: Room_Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523131643899904
+    m_Key: Room_HideRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523132910579712
+    m_Key: Room_FriendlyFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6524761374273536
+    m_Key: Room_Frying Pan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526200360284160
+    m_Key: MapOne_Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526201245282304
+    m_Key: MapOne_Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202042200064
+    m_Key: MapOne_Guide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202805563392
+    m_Key: MapOne_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527582744162304
+    m_Key: MapOne_Settings_Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527625668669440
+    m_Key: MapOne_Settings_Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626197151744
+    m_Key: MapOne_Settings_Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626641747968
+    m_Key: MapOne_Settings_Close
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

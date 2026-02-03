@@ -60,7 +60,7 @@ MonoBehaviour:
   fakeLoadingTime: 3
   tipText: {fileID: 2730777507081978215}
   tips: []
-  fakeStartPer: 0
+  fakeStartPer: 0.5
   photonView: {fileID: 0}
 --- !u!223 &1293266250876713838
 Canvas:

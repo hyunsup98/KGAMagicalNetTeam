@@ -82,6 +82,214 @@ MonoBehaviour:
     m_Localized: Room Setting/ViewPoint Change
     m_Metadata:
       m_Items: []
+  - m_Id: 6236874422431744
+    m_Localized: BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236965371719680
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236999735652352
+    m_Localized: Speaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237019566321664
+    m_Localized: Microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237053062033408
+    m_Localized: Mouse Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237102122807296
+    m_Localized: Graphic Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237134993567744
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237150105645056
+    m_Localized: Inverse X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237177687388160
+    m_Localized: Inverse Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237195936804864
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237215725531136
+    m_Localized: Screen Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286397580587008
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286466543333376
+    m_Localized: Middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286492535435264
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287662461038592
+    m_Localized: Korean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287755587170304
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287775182958592
+    m_Localized: Japanese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6289993625841664
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6290076610146304
+    m_Localized: Window Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343091299889152
+    m_Localized: Back to Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343154214449152
+    m_Localized: Sign Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343196866326528
+    m_Localized: Enter Email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343217867206656
+    m_Localized: Enter Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343246396862464
+    m_Localized: Enter Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345416626221056
+    m_Localized: Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345470325895168
+    m_Localized: Change Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351981454372864
+    m_Localized: Select Color
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345530212167680
+    m_Localized: Enter Room Number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345580770308096
+    m_Localized: Join Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345598570934272
+    m_Localized: Created Room Number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345618560987136
+    m_Localized: Create Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345639276654592
+    m_Localized: Quick Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345673682530304
+    m_Localized: Back to Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345731509399552
+    m_Localized: Research
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351986277822464
+    m_Localized: Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351988056207360
+    m_Localized: Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351989868146688
+    m_Localized: Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351991688474624
+    m_Localized: Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351993454276608
+    m_Localized: Pink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521783556845568
+    m_Localized: Back To Lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522707188723712
+    m_Localized: Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523131643899904
+    m_Localized: Private Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523132910579712
+    m_Localized: Friendly Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6524761374273536
+    m_Localized: Frying Pan (Probably)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526200360284160
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202805563392
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526201245282304
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202042200064
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527582744162304
+    m_Localized: GamePlay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527625668669440
+    m_Localized: Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626197151744
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626641747968
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
