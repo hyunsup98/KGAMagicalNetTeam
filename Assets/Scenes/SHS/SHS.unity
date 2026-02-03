@@ -2326,6 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c2f446abc37684e8493224e9bd0847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  test: {fileID: 8300000, guid: 6ce4f43acfbc2904dbb42a207b6fc5d9, type: 3}
   <MasterAudioMixer>k__BackingField: {fileID: 24100000, guid: 77dd2b2cba52fae48a091294a4b69b29, type: 2}
   <bgmSource>k__BackingField: {fileID: 319731741435481572}
   sfxSource: {fileID: 5921257623955727483, guid: 70112f5a677766248b79eb098cc8b299, type: 3}
@@ -2346,7 +2347,7 @@ MonoBehaviour:
   initSize: 4
   maxSize: 50
   initCount: 0
-  data: {fileID: 0}
+  data: {fileID: 5921257623955727483, guid: 70112f5a677766248b79eb098cc8b299, type: 3}
 --- !u!1 &5303574713381041695
 GameObject:
   m_ObjectHideFlags: 0

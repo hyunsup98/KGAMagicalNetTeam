@@ -290,6 +290,26 @@ MonoBehaviour:
     m_Localized: Close
     m_Metadata:
       m_Items: []
+  - m_Id: 6638311883223040
+    m_Localized: '<size=80>Lose</size>
+
+      Waiting for the host...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638351972380672
+    m_Localized: '<size=80>Win</size>
+
+      Waiting for the host...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638039475761152
+    m_Localized: Lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638327372787712
+    m_Localized: Win
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

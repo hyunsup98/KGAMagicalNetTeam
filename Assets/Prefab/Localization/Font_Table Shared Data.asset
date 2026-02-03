@@ -23,6 +23,38 @@ MonoBehaviour:
     m_Key: Material Preset
     m_Metadata:
       m_Items: []
+  - m_Id: 6638485787455488
+    m_Key: Win/Canvas/Win Text/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638486034919424
+    m_Key: Win/Canvas/Win Text/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638705472516096
+    m_Key: Win/Canvas/Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638705489293312
+    m_Key: Win/Canvas/Button/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638948654067712
+    m_Key: Lose/Canvas/Lose Text/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638948683427840
+    m_Key: Lose/Canvas/Lose Text/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6639255198969856
+    m_Key: Lose/Canvas/Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6639255219941376
+    m_Key: Lose/Canvas/Button/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 579319845140562010
@@ -45,6 +77,22 @@ MonoBehaviour:
           - ko
           - en
           - ja
+        - m_KeyId: 6638485787455488
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6638705472516096
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6638948654067712
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6639255198969856
+          m_TableCodes:
+          - ko
+          - ja
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
     - rid: 579319845140562011
@@ -55,6 +103,22 @@ MonoBehaviour:
           m_TableCodes:
           - ko
           - en
+          - ja
+        - m_KeyId: 6638486034919424
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6638705489293312
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6638948683427840
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6639255219941376
+          m_TableCodes:
+          - ko
           - ja
         m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
