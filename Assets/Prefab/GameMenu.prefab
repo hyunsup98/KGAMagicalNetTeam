@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2507267825196937001}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -24746,6 +24746,7 @@ MonoBehaviour:
   - {fileID: 553836685981980678}
   - {fileID: 2359582404883663745}
   - {fileID: 4885608926298287095}
+  - {fileID: 2507267825196937001}
   Panels: []
   escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   checkOpenUI: 0

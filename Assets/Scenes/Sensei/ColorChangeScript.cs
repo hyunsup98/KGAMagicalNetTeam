@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ColorChangeScript : MonoBehaviourPunCallbacks
 {
-    //260113 ÃÖÁ¤¿í WizardColor ½Ã½ºÅÛ Àû¿ë
+    //260113 ìµœì •ìš± WizardColor ì‹œìŠ¤í…œ ì ìš©
     [SerializeField] List<Color> playerColors = new List<Color>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (PhotonNetwork.LocalPlayer == null) return;
+
         if (GetComponent<PhotonView>().IsMine == false)
         {
             return;
@@ -17,11 +19,10 @@ public class ColorChangeScript : MonoBehaviourPunCallbacks
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("WizardColor"))
         {
 
-
             int colorIndex = (int)PhotonNetwork.LocalPlayer.CustomProperties["WizardColor"] - 1;
             if (colorIndex < 0 || colorIndex >= playerColors.Count)
             {
-                colorIndex = 0; // ±âº» »ö»ó ÀÎµ¦½º·Î ¼³Á¤
+                colorIndex = 0; // ê¸°ë³¸ ìƒ‰ìƒ ì¸ë±ìŠ¤ë¡œ ì„¤ì •
             }
             photonView.RPC("ChangeColor", RpcTarget.AllBuffered, colorIndex);
         }

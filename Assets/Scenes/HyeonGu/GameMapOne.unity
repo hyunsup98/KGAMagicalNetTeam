@@ -41277,7 +41277,7 @@ PrefabInstance:
     - target: {fileID: 2260721656439838210, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5628278970871787561}
     - target: {fileID: 2761072289559915672, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
       propertyPath: m_Name
       value: GameMenu
@@ -41289,7 +41289,7 @@ PrefabInstance:
     - target: {fileID: 3658062380931500598, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
       propertyPath: 'settingUIGameObject.Array.data[3]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5628278970871787561}
     - target: {fileID: 5270164440428644318, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -41339,6 +41339,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
+--- !u!1 &5628278970871787561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2507267825196937001, guid: 5b9c800cfb7871d40948778175a3f493, type: 3}
+  m_PrefabInstance: {fileID: 5628278970871787560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8923423406271609732
 PrefabInstance:
   m_ObjectHideFlags: 0
