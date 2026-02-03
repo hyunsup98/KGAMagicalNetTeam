@@ -26,7 +26,6 @@ public static class PlayerPrefsDataManager
     public const string KEY_SFXVOLUME_MUTE = "SFXVolumeMute";
     public const string KEY_PlayerVoice_MUTE = "PlayerVoiceMute";
     public const string KEY_PlayerMic_MUTE = "PlayerMicMute";
-    
     #endregion
 
     public static string LoginId
