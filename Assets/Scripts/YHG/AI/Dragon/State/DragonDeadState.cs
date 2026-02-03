@@ -35,9 +35,14 @@ public class DragonDeadState : BossStateBase
     {
         yield return CoroutineManager.waitForSeconds(destroyDelay);
 
+        if (BossRaidManager.Instance != null)
+        {
+            BossRaidManager.Instance.OnBossDefeated();
+        }
+
+        yield return CoroutineManager.waitForSeconds(0.5f);
         PhotonNetwork.Destroy(dragon.gameObject);
 
-        //클리어? 보상?
     }
 
     public override void Exit() { }
