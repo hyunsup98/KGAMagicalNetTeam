@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public enum Soundtype
@@ -12,6 +13,8 @@ public enum Soundtype
 
 public class SoundManager : SingletonForSoundManager<SoundManager>
 {
+    [SerializeField] private AudioClip test;
+
     [Header("오디오 믹서")]
     [field: SerializeField] public AudioMixer MasterAudioMixer { get; private set; }
 
@@ -38,6 +41,12 @@ public class SoundManager : SingletonForSoundManager<SoundManager>
     {
         base.Awake();
         InitData();
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.jKey.wasPressedThisFrame)
+            PlaySFX(test);
     }
 
     #region Init

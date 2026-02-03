@@ -287,6 +287,22 @@ MonoBehaviour:
     m_Key: MapOne_Settings_Close
     m_Metadata:
       m_Items: []
+  - m_Id: 6638039475761152
+    m_Key: Lose_Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638311883223040
+    m_Key: Lose_Guest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638327372787712
+    m_Key: Win_Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638351972380672
+    m_Key: Win_Guest
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

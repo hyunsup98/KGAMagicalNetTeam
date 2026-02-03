@@ -5237,6 +5237,7 @@ MonoBehaviour:
   myWeapons:
   - {fileID: 474251446794287740}
   - {fileID: 5347394125784053140}
+  <assassinateData>k__BackingField: {fileID: 0}
 --- !u!114 &5264165404803192439
 MonoBehaviour:
   m_ObjectHideFlags: 0
