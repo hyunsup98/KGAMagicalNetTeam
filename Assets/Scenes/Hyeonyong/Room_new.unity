@@ -4409,6 +4409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588128327}
   - component: {fileID: 588128326}
+  - component: {fileID: 588128328}
   m_Layer: 0
   m_Name: hexagon_brown
   m_TagString: Untagged
@@ -4463,7 +4464,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 590e1feded748894db8ee8bf80bfc87a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 844bcfa2f4f2ee24abaa7fbf226502bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4482,13 +4483,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588128325}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -52.46, y: 97.3, z: -18.9}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -52.46, y: 98.415, z: -18.9}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &588128328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588128325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62097dc5f608a494eafbfc1e2f09bf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KGAGirlSpin
+  spinSpeed: 90
+  upAndDownSpeed: 0.5
+  upAndDownDistance: 0.5
 --- !u!1001 &590172468
 PrefabInstance:
   m_ObjectHideFlags: 0
