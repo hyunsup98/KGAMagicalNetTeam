@@ -15,7 +15,7 @@ public static class BuildAutomator
                 scenes.Add(scene.path);
         }
 
-        // 빌드 설정 세팅
+        // 빌드 설정
         BuildPlayerOptions options = new BuildPlayerOptions();
         options.scenes = scenes.ToArray();
         options.locationPathName = $"C:\\Build\\{PlayerSettings.productName}.exe";
